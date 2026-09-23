@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,192 @@
 </head>
 
 <body>
-    <section neme="header">
-        <div name="logo">
-            <img src="../icons/logo-barberdeck.svg" alt="Logo com formato da letra de, e uma representação de uma navalha">
+    <header class="header">
+        <div class="header-container">
+
+            <!-- LADO ESQUERDO: LOGO -->
+            <a href="index.html" class="header-logo">
+                <img src="../icons/logo-barberdeck.svg" alt="Logo BarberDeck">
+            </a>
+
+            <!-- CENTRO: NAVEGAÇÃO (BARBEARIAS, COMO FUNCIONA, PARA BARBEARIAS) -->
+            <nav class="header-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#barbearias" class="nav-link">Barbearias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#como-funciona" class="nav-link">Como Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#para-barbearias" class="nav-link">Para Barbearias</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- LADO DIREITO: ÁREA DO USUÁRIO / LOGIN -->
+            <div class="header-auth">
+                <!-- Botão para disparar o popup -->
+                <button type="button" class="btn-auth" id="btn-open-login">
+                    <img src="../icons/icon-user.svg" alt="" class="auth-icon" aria-hidden="true">
+                    <span class="auth-text" id="user-display">Entrar</span>
+                </button>
+            </div>
+
         </div>
-            
-        <nav>
-            <ul>
-                <li name="listItens"><a name="btnBarbearias" href="index.html">Barbearias</a></li>
-                <li name="listItens"><a name="btnComoFunciona" href="sobre.html">Como Funciona</a></li>
-                <li name="listItens"><a name="btnCotato" href="contato.html">Para Barbearias</a></li>
-            </ul>
-        </nav>
+    </header>
 
-        <div neme="loginInfo">
+    <!-- POPUP LOGIN / CADASTRAR -->
+    <dialog class="modal-auth" id="modal-auth">
+        <div class="modal-card">
+
+            <!-- BOTÃO FECHAR: X -->
+            <button type="button" class="btn-close" id="btn-close-modal" aria-label="Fechar">
+                <img src="../icons/icon-x.svg" alt="" aria-hidden="true">
+            </button>
+
+            <!-- 1º NÍVEL: TOGGLE LOGIN / CADASTRAR -->
+            <div class="toggle-tabs" role="tablist" aria-label="Modo de autenticação">
+                <button type="button" class="tab-btn active" id="tab-login" role="tab" aria-selected="true"
+                    aria-controls="form-login">
+                    Login
+                </button>
+                <button type="button" class="tab-btn" id="tab-register" role="tab" aria-selected="false"
+                    aria-controls="view-register">
+                    Cadastrar
+                </button>
+            </div>
+
+            <!-- PAINEL 1: FORMULÁRIO DE LOGIN -->
+            <form class="auth-form" id="form-login" role="tabpanel" aria-labelledby="tab-login">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" name="senha" required>
+                    <a href="#recuperar-senha" class="forgot-link">esqueci a senha</a>
+                </div>
+
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+
+            <!-- PAINEL 2: ÁREA DE CADASTRO (CLIENTE / BARBEARIA) -->
+            <div class="register-container" id="view-register" role="tabpanel" aria-labelledby="tab-register" hidden>
+
+                <!-- 2º NÍVEL: SELETOR DE PERFIL (CLIENTE OU BARBEARIA) -->
+                <div class="profile-selector" role="tablist" aria-label="Tipo de conta">
+                    <button type="button" class="profile-card active" id="btn-tipo-cliente" role="tab"
+                        aria-selected="true" aria-controls="form-cadastro-cliente">
+                        <img src="../icons/icon-user.svg" alt="" class="profile-icon" aria-hidden="true">
+                        <span class="profile-title">Cliente</span>
+                        <span class="profile-desc">Agende seus horários</span>
+                    </button>
+
+                    <button type="button" class="profile-card" id="btn-tipo-barbearia" role="tab" aria-selected="false"
+                        aria-controls="form-cadastro-barbearia">
+                        <img src="../icons/icon-barbearia.svg" alt="" class="profile-icon" aria-hidden="true">
+                        <span class="profile-title">Barbearia</span>
+                        <span class="profile-desc">Gerencie seu negócio</span>
+                    </button>
+                </div>
+
+                <!-- FORMULÁRIO 2A: CADASTRO CLIENTE -->
+                <form class="auth-form" id="form-cadastro-cliente" role="tabpanel" aria-labelledby="btn-tipo-cliente">
+                    <div class="form-group full-width">
+                        <label for="cliente-nome">Nome Completo</label>
+                        <input type="text" id="cliente-nome" name="nome" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-whatsapp">WhatsApp</label>
+                            <input type="tel" id="cliente-whatsapp" name="whatsapp" placeholder="(00) 00000-0000"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-cidade">Cidade</label>
+                            <input type="text" id="cliente-cidade" name="cidade" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-email">Email</label>
+                            <input type="email" id="cliente-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-senha">Senha</label>
+                            <input type="password" id="cliente-senha" name="senha" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Criar conta</button>
+                </form>
+
+                <!-- FORMULÁRIO 2B: CADASTRO BARBEARIA -->
+                <form class="auth-form" id="form-cadastro-barbearia" role="tabpanel"
+                    aria-labelledby="btn-tipo-barbearia" hidden>
+                    <div class="form-group full-width">
+                        <label for="barbearia-nome">Nome da Empresa</label>
+                        <input type="text" id="barbearia-nome" name="nome_empresa" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="barbearia-cnpj">CNPJ</label>
+                            <input type="text" id="barbearia-cnpj" name="cnpj" placeholder="00.000.000/0000-00"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="barbearia-whatsapp">WhatsApp</label>
+                            <input type="tel" id="barbearia-whatsapp" name="whatsapp" placeholder="(00) 00000-0000"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="barbearia-cep">CEP</label>
+                            <input type="text" id="barbearia-cep" name="cep" placeholder="00000-000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="barbearia-cidade">Cidade</label>
+                            <input type="text" id="barbearia-cidade" name="cidade" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="barbearia-bairro">Bairro</label>
+                            <input type="text" id="barbearia-bairro" name="bairro" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="barbearia-logradouro">Logradouro</label>
+                            <input type="text" id="barbearia-logradouro" name="logradouro" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="barbearia-email">Email</label>
+                            <input type="email" id="barbearia-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="barbearia-senha">Senha</label>
+                            <input type="password" id="barbearia-senha" name="senha" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Criar conta</button>
+                </form>
+
+            </div>
+
         </div>
-
-
-
-
-
-    </section>
+    </dialog>
 </body>
+
 </html>
