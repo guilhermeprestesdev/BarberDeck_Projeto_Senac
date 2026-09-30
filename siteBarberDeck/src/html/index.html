@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,204 @@
 
 <body>
     <!-- PAGINA INICIAL PARA USUARIOS NÃO LOGADOS E CLIENTES -->
-    <header>
-        <img src="../images/imagem-topo-client.jpg" alt="" aria-hidden="true">
-    </header>
+    <main class="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1 class="hero-p1">Agendamento Inteligente em Tempo Real</h1>
+                <h2 class="hero-h1">Agende seu próximo corte perfeito</h2>
+                <p class="hero-p2">Encontre as melhores barbearias perto de você e agende em segundos, sem filas.</p>
+            </div>
+            <div class="hero-image">
+                <img src="../images/imagem-topo-client.jpg" alt="Imagem principal da barbearia">
+            </div>
+        </section>
+
+        <!-- Barra de Busca -->
+        <section class="search-section">
+            <form class="search-bar" action="/buscar" method="GET">
+                <input type="text" name="nome" id="nome-barber" placeholder="Pesquise por Nome">
+                <input type="text" name="cidade" id="idade-barber" placeholder="Pesquise por cidade">
+                <button type="submit" aria-label="Buscar">
+                    <img src="../icons/icon-search.svg" alt="" class="search-icon">
+                </button>
+            </form>
+        </section>
+
+        <!-- Barbearias em Destaque -->
+        <section class="barbershops-section">
+            <div class="section-header">
+                <h2>Barbearias em Destaque</h2>
+                <p>As mais bem avaliadas do site</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card Barbearia (exemplo Aberto) -->
+                <article class="barbershop-card">
+                    <div class="card-image-wrapper">
+                        <span class="status-badge open">aberto</span>
+                        <img src="barbearia1.jpg" alt="Barbearia Estilo">
+                    </div>
+                    <div class="card-info">
+                        <h3>NOME DA BARBEARIA</h3>
+                        <p class="location">bairro, cidade</p>
+                        <div class="card-bottom">
+                            <span class="rating">⭐ 4.9</span>
+                            <a href="/agendar/1" class="btn-agendar">Agendar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card Barbearia (exemplo Fechado) -->
+                <article class="barbershop-card">
+                    <div class="card-image-wrapper">
+                        <span class="status-badge closed">fechado</span>
+                        <img src="barbearia2.jpg" alt="Barbearia Clássica">
+                    </div>
+                    <div class="card-info">
+                        <h3>NOME DA BARBEARIA</h3>
+                        <p class="location">bairro, cidade</p>
+                        <div class="card-bottom">
+                            <span class="rating">⭐ 4.8</span>
+                            <a href="/agendar/2" class="btn-agendar">Agendar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card Barbearia -->
+                <article class="barbershop-card">
+                    <div class="card-image-wrapper">
+                        <span class="status-badge open">aberto</span>
+                        <img src="barbearia3.jpg" alt="Barbearia Moderna">
+                    </div>
+                    <div class="card-info">
+                        <h3>NOME DA BARBEARIA</h3>
+                        <p class="location">bairro, cidade</p>
+                        <div class="card-bottom">
+                            <span class="rating">⭐ 5.0</span>
+                            <a href="/agendar/3" class="btn-agendar">Agendar</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Barbearias Novas -->
+        <section class="barbershops-section">
+            <div class="section-header">
+                <h2>Barbearias novas</h2>
+                <p>Cadastradas no último mês</p>
+            </div>
+
+            <div class="cards-grid">
+                <article class="barbershop-card">
+                    <div class="card-image-wrapper">
+                        <span class="status-badge open">aberto</span>
+                        <img src="barbearia4.jpg" alt="Barbearia Nova 1">
+                    </div>
+                    <div class="card-info">
+                        <h3>NOME DA BARBEARIA</h3>
+                        <p class="location">bairro, cidade</p>
+                        <div class="card-bottom">
+                            <span class="rating">⭐ 4.7</span>
+                            <a href="/agendar/4" class="btn-agendar">Agendar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="barbershop-card">
+                    <div class="card-image-wrapper">
+                        <span class="status-badge closed">fechado</span>
+                        <img src="barbearia5.jpg" alt="Barbearia Nova 2">
+                    </div>
+                    <div class="card-info">
+                        <h3>NOME DA BARBEARIA</h3>
+                        <p class="location">bairro, cidade</p>
+                        <div class="card-bottom">
+                            <span class="rating">⭐ 4.9</span>
+                            <a href="/agendar/5" class="btn-agendar">Agendar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="barbershop-card">
+                    <div class="card-image-wrapper">
+                        <span class="status-badge open">aberto</span>
+                        <img src="barbearia6.jpg" alt="Barbearia Nova 3">
+                    </div>
+                    <div class="card-info">
+                        <h3>NOME DA BARBEARIA</h3>
+                        <p class="location">bairro, cidade</p>
+                        <div class="card-bottom">
+                            <span class="rating">⭐ 4.6</span>
+                            <a href="/agendar/6" class="btn-agendar">Agendar</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Como Funciona -->
+        <section class="how-it-works-section" id="como-funciona">
+            <div class="section-header">
+                <h2>Como Funciona</h2>
+            </div>
+
+            <div class="how-it-works-container">
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <span class="step-number">1</span>
+                        <h3>encontre</h3>
+                        <p>texto explicativo</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">2</span>
+                        <h3>escolha</h3>
+                        <p>texto explicativo</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">3</span>
+                        <h3>confirme</h3>
+                        <p>texto explicativo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planos -->
+        <section class="plans-section" id="planos">
+            <div class="section-header">
+                <h2>planos</h2>
+            </div>
+
+            <div class="plans-container">
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <span class="plan-number">1</span>
+                        <h3>barato</h3>
+                        <p>texto explicativo</p>
+                    </div>
+                    <div class="plan-card featured">
+                        <span class="plan-number">2</span>
+                        <h3>medio</h3>
+                        <p>texto explicativo</p>
+                    </div>
+                    <div class="plan-card">
+                        <span class="plan-number">3</span>
+                        <h3>caro</h3>
+                        <p>texto explicativo</p>
+                    </div>
+                </div>
+
+                <div class="plans-cta">
+                    <a href="/cadastro" class="btn-trial">teste gratis</a>
+                    <small class="trial-note">teste gratis 15 dias</small>
+                </div>
+            </div>
+        </section>
+
+    </main>
 </body>
 
 </html>
