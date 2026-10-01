@@ -31,10 +31,12 @@
                 <input type="text" name="nome" id="nome-barber" placeholder="Pesquise por Nome">
                 <input type="text" name="cidade" id="idade-barber" placeholder="Pesquise por cidade">
                 <button type="submit" aria-label="Buscar">
-                    <img src="../icons/icon-search.svg" alt="" class="search-icon">
+                    <img src="../icons/icon-search.svg" alt="" class="search-icon"> // corrigir com css
                 </button>
             </form>
         </section>
+
+        <hr>
 
         <!-- Barbearias em Destaque -->
         <section class="barbershops-section">
@@ -94,6 +96,8 @@
             </div>
         </section>
 
+        <hr>
+
         <!-- Barbearias Novas -->
         <section class="barbershops-section">
             <div class="section-header">
@@ -101,7 +105,7 @@
                 <p>Cadastradas no último mês</p>
             </div>
 
-            <div class="cards-grid">
+            <div class="cards-grid">    <!-- cards apenas de demonstração (posteriormente serao gerados com o js) -->
                 <article class="barbershop-card">
                     <div class="card-image-wrapper">
                         <span class="status-badge open">aberto</span>
@@ -149,13 +153,17 @@
             </div>
         </section>
 
+        <hr>
+
         <!-- Como Funciona -->
         <section class="how-it-works-section" id="como-funciona">
             <div class="section-header">
                 <h2>Como Funciona</h2>
             </div>
 
-            <div class="how-it-works-container">
+            
+            <div class="how-it-works-container"
+                style="background-image: url('../images/imagem-passos-a-passo.jpg')"> // corrigir com css
                 <div class="steps-grid">
                     <div class="step-card">
                         <span class="step-number">1</span>
@@ -176,6 +184,8 @@
             </div>
         </section>
 
+        <hr>
+
         <!-- Planos -->
         <section class="plans-section" id="planos">
             <div class="section-header">
@@ -186,24 +196,28 @@
                 <div class="plans-grid">
                     <div class="plan-card">
                         <span class="plan-number">1</span>
-                        <h3>barato</h3>
+                        <h3>gratis</h3>
                         <p>texto explicativo</p>
+                        <p>valor</p>
+                        <p>beneficios</p>
+                        <a href="/plano gratis" class="btn-agendar">Contratar</a>
                     </div>
                     <div class="plan-card featured">
                         <span class="plan-number">2</span>
-                        <h3>medio</h3>
+                        <h3>plano1</h3>
                         <p>texto explicativo</p>
+                        <p>valor</p>
+                        <p>beneficios</p>
+                        <a href="/plano 1" class="btn-agendar">Contratar</a>
                     </div>
                     <div class="plan-card">
                         <span class="plan-number">3</span>
-                        <h3>caro</h3>
+                        <h3>plano2</h3>
                         <p>texto explicativo</p>
+                        <p>valor</p>
+                        <p>beneficios</p>
+                        <a href="/plano 2" class="btn-agendar">Contratar</a>
                     </div>
-                </div>
-
-                <div class="plans-cta">
-                    <a href="/cadastro" class="btn-trial">teste gratis</a>
-                    <small class="trial-note">teste gratis 15 dias</small>
                 </div>
             </div>
         </section>

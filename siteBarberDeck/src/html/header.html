@@ -8,38 +8,27 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-container">
 
-            <!-- LADO ESQUERDO: LOGO -->
-            <a href="index.html" class="header-logo">
-                <img src="../icons/logo-barberdeck.svg" alt="Logo BarberDeck">
+    <header class="main-header">
+        <div class="header-container">
+            <!-- Logotipo -->
+            <a href="/" class="header-logo">
+                <img src="../icons/logo-barberdeck.svg" alt="BarberDeck">
             </a>
 
-            <!-- CENTRO: NAVEGAÇÃO (BARBEARIAS, COMO FUNCIONA, PARA BARBEARIAS) -->
-            <nav class="header-nav">
+            <!-- Menu de Navegação Central -->
+            <nav class="header-nav" aria-label="Navegação Principal">
                 <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#barbearias" class="nav-link">Barbearias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#como-funciona" class="nav-link">Como Funciona</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#para-barbearias" class="nav-link">Para Barbearias</a>
-                    </li>
+                    <li><a href="#barbearias">Barbearias</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#para-barbearias">Para Barbearias</a></li>
                 </ul>
             </nav>
 
-            <!-- LADO DIREITO: ÁREA DO USUÁRIO / LOGIN -->
-            <div class="header-auth">
-                <!-- Botão para disparar o popup -->
-                <button type="button" class="btn-auth" id="btn-open-login">
-                    <img src="../icons/icon-user.svg" alt="" class="auth-icon" aria-hidden="true">
-                    <span class="auth-text" id="user-display">Entrar</span>
-                </button>
+            <!-- Botão de Ação / Login -->
+            <div class="header-actions">
+                <a href="/login" class="btn-login">Login</a>
             </div>
-
         </div>
     </header>
 
