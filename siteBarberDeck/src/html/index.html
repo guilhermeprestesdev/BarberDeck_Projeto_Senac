@@ -16,8 +16,8 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-text">
-                <h1 class="hero-p1">Agendamento Inteligente em Tempo Real</h1>
-                <h2 class="hero-h1">Agende seu próximo corte perfeito</h2>
+                <p class="hero-p1">Agendamento Inteligente em Tempo Real</p>
+                <h1 class="hero-h1">Agende seu próximo corte perfeito</h1>
                 <p class="hero-p2">Encontre as melhores barbearias perto de você e agende em segundos, sem filas.</p>
             </div>
             <div class="hero-image">
@@ -105,7 +105,7 @@
                 <p>Cadastradas no último mês</p>
             </div>
 
-            <div class="cards-grid">    <!-- cards apenas de demonstração (posteriormente serao gerados com o js) -->
+            <div class="cards-grid"> <!-- cards apenas de demonstração (posteriormente serao gerados com o js) -->
                 <article class="barbershop-card">
                     <div class="card-image-wrapper">
                         <span class="status-badge open">aberto</span>
@@ -161,24 +161,24 @@
                 <h2>Como Funciona</h2>
             </div>
 
-            
-            <div class="how-it-works-container"
-                style="background-image: url('../images/imagem-passos-a-passo.jpg')"> // corrigir com css
+
+            <div class="how-it-works-container" style="background-image: url('../images/imagem-passos-a-passo.jpg')"> //
+                corrigir com css
                 <div class="steps-grid">
                     <div class="step-card">
                         <span class="step-number">1</span>
                         <h3>encontre</h3>
-                        <p>texto explicativo</p>
+                        <p>Busque barbearias por nome ou localização, com avaliações reais.</p>
                     </div>
                     <div class="step-card">
                         <span class="step-number">2</span>
                         <h3>escolha</h3>
-                        <p>texto explicativo</p>
+                        <p>Selecione o barbeiro, serviço, data e horário disponível em tempo real.</p>
                     </div>
                     <div class="step-card">
                         <span class="step-number">3</span>
                         <h3>confirme</h3>
-                        <p>texto explicativo</p>
+                        <p>Receba a confirmação no WhatsApp e apareça na hora certa. Simples assim.</p>
                     </div>
                 </div>
             </div>
@@ -194,30 +194,98 @@
 
             <div class="plans-container">
                 <div class="plans-grid">
+                    <!-- PLANO 1 -->
                     <div class="plan-card">
-                        <span class="plan-number">1</span>
-                        <h3>gratis</h3>
-                        <p>texto explicativo</p>
-                        <p>valor</p>
-                        <p>beneficios</p>
-                        <a href="/plano gratis" class="btn-agendar">Contratar</a>
+                        <h3 class="plan-name">Plano Starter</h3>
+                        <p class="plan-target">Para barbearias iniciantes testarem a plataforma.</p>
+                        <div class="plan-price-box">
+                            <span class="price-val">R$ 0</span>
+                            <span class="price-period"> / por 15 dias de teste</span>
+                        </div>
+                        <ul class="plan-features-list">
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>15 dias de acesso total gratuito</span></li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Até 2 barbeiros / funcionários</span></li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Página de perfil no catálogo</span></li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Agendamento online básico</span></li>
+                        </ul>
+                        <button class="btn-plan">Teste Grátis 15 Dias</button>
                     </div>
+
+                    <!-- PLANO 2 -->
                     <div class="plan-card featured">
-                        <span class="plan-number">2</span>
-                        <h3>plano1</h3>
-                        <p>texto explicativo</p>
-                        <p>valor</p>
-                        <p>beneficios</p>
-                        <a href="/plano 1" class="btn-agendar">Contratar</a>
+                        <div class="plan-badge-highlight">Mais Escolhido</div>
+                        <h3 class="plan-name">Plano Gestão Pro</h3>
+                        <p class="plan-target">Automação e controle total do seu negócio.</p>
+                        <div class="plan-price-box">
+                            <span class="price-val">R$ 69,90</span>
+                            <span class="price-period"> / mês</span>
+                        </div>
+                        <ul class="plan-features-list">
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Sistema completo de gestão da barbearia</span>
+                            </li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Barbeiros e funcionários ilimitados</span>
+                            </li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Gestão de horários e comissões</span>
+                            </li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Dashboard com métricas e faturamento</span>
+                            </li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Lembretes automáticos via WhatsApp</span>
+                            </li>
+                        </ul>
+                        <button class="btn-plan-secundary">Começar Agora</button>
                     </div>
+
+                    <!-- PLANO 3 -->
                     <div class="plan-card">
-                        <span class="plan-number">3</span>
-                        <h3>plano2</h3>
-                        <p>texto explicativo</p>
-                        <p>valor</p>
-                        <p>beneficios</p>
-                        <a href="/plano 2" class="btn-agendar">Contratar</a>
+                        <h3 class="plan-name">Plano Elite & Destaque</h3>
+                        <p class="plan-target">Máxima visibilidade e escala rápida.</p>
+                        <div class="plan-price-box">
+                            <span class="price-val">R$ 169,90</span>
+                            <span class="price-period"> / mês</span>
+                        </div>
+                        <ul class="plan-features-list">
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Sistema de Gestão Completo & Relatórios VIP</span>
+                            </li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Anúncio patrocinado em destaque no site</span>
+                            </li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Suporte Prioritário 24 horas por dia</span>
+                            </li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Selo Barbearia Verificada & Top Buscas</span>
+                            </li>
+                            <li class="plan-feature-item">
+                                <img src="..\icons\icon-check.svg" alt="Check">
+                                <span>Pagamento online integrado (PIX e Cartão)</span>
+                            </li>
+                        </ul>
+                        <button class="btn-plan-secundary">Assinar Plano Elite</button>
                     </div>
+                    <p class="plan-notes">Cancele quando quiser. Todos os planos incluem configuração guiada e atualizações contínuas.</p>
                 </div>
             </div>
         </section>
