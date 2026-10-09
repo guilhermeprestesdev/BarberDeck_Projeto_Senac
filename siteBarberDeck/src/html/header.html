@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+<head>
+    <link rel="stylesheet" href="../css/header.css">
+</head>
+
 <body>
 
     <header class="main-header">
@@ -12,6 +16,15 @@
 
             <!-- Menu de Navegação Central -->
             <nav class="header-nav" aria-label="Navegação Principal">
+
+                <!-- Checkbox invisível para controle de abertura/fechamento -->
+                <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Abrir Menu">
+
+                <!-- Ícone que substitui os links no mobile -->
+                <label for="menu-toggle" class="btn-menu-icon" aria-label="Menu">
+                    <img src="../icons/icon-menu.svg" alt="Menu">
+                </label>
+
                 <ul class="nav-list">
                     <li><a href="#barbearias">Barbearias</a></li>
                     <li><a href="#como-funciona">Como Funciona</a></li>

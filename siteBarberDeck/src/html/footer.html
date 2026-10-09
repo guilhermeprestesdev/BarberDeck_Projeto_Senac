@@ -1,20 +1,44 @@
-<footer>
-    <div>
+<head>
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+
+<footer class="main-footer">
+    <div class="footer-container">
 
         <!-- 1. BLOCO LOGO E DESCRIÇÃO -->
-        <div>
-            <div>
-                <img src="..\icons\logo-barberdeck.svg" alt="Ícone Logo">
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <img src="../icons/logo-barberdeck.svg" alt="BarberDeck">
             </div>
-            <p>
+            <p class="footer-description">
                 Sua plataforma para gestão inteligente de barbearias e agendamentos online sem filas.
             </p>
         </div>
 
-        <!-- 2. INFO PROJETO -->
-        <div>
-            <h4>BarberDeck</h4>
-            <ul>
+        <!-- 2. INFO CONTATO -->
+        <div class="footer-column footer-contact">
+            <h4 class="footer-title">Contato</h4>
+            
+            <div class="contact-item">
+                <img src="../icons/icon-telefone.svg" alt="Ícone Telefone" class="contact-icon">
+                <span>(54) 99985-3855</span>
+            </div>
+
+            <div class="contact-item">
+                <img src="../icons/icon-whatsapp.svg" alt="Ícone WhatsApp" class="contact-icon">
+                <span>WhatsApp: (54) 99985-3855</span>
+            </div>
+
+            <div class="contact-item">
+                <img src="../icons/icon-email.svg" alt="Ícone E-mail" class="contact-icon">
+                <span>contato@barberdeck.com.br</span>
+            </div>
+        </div>
+
+        <!-- 3. INFO PROJETO -->
+        <div class="footer-column footer-links">
+            <h4 class="footer-title">BarberDeck</h4>
+            <ul class="footer-nav-list">
                 <li><a href="index.html">Sobre a Plataforma</a></li>
                 <li><a href="index.html">Como Funciona</a></li>
                 <li><a href="index.html">Planos & Preços</a></li>
@@ -24,30 +48,12 @@
             </ul>
         </div>
 
-        <!-- 3. INFO CONTATO -->
-        <div>
-            <h4>Contato</h4>
-            <div>
-                <img src="..\icons\icon-telefone.svg" alt="Ícone Telefone">
-                <span>(54) 99985-3855</span>
-            </div>
-
-            <div>
-                <img src="..\icons\icon-whatsapp.svg" alt="Ícone WhatsApp">
-                <span>WhatsApp: (54) 99985-3855</span>
-            </div>
-
-            <div>
-                <img src="..\icons\icon-email.svg" alt="Ícone E-mail">
-                <span>contato@barberdeck.com.br</span>
-            </div>
-        </div>
-
     </div>
 
-    <div>
-        <div>&copy; 2026 BarberDeck Inc. Todos os direitos reservados.</div>
-        <div>
+    <!-- BARRA INFERIOR / COPYRIGHT -->
+    <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 BarberDeck Inc. Todos os direitos reservados.</div>
+        <div class="footer-legal-links">
             <a href="index.html">Termos Gerais</a>
             <a href="index.html">Privacidade & LGPD</a>
             <a href="index.html">Suporte</a>
