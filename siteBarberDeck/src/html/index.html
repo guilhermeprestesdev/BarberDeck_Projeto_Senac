@@ -7,7 +7,7 @@
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="description" content="Gestor para barbearias">
     <title>BarberDeck</title>
-    <script src="../js/header-component.js" defer></script>
+    <script src="../js/header-footer-component.js" defer></script>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         <hr>
 
         <!-- Barbearias em Destaque -->
-        <section class="barbershops-section">
+        <section class="barbershops-section" id="barbearias-destaque">
             <div class="section-header">
                 <h2>Barbearias em Destaque</h2>
                 <p>As mais bem avaliadas do site</p>
@@ -102,7 +102,7 @@
 
         <!-- Barbearias Novas -->
         <section class="barbershops-section">
-            <div class="section-header">
+            <div class="section-header" id="barbearias-novas">
                 <h2>Barbearias novas</h2>
                 <p>Cadastradas no último mês</p>
             </div>
@@ -293,6 +293,8 @@
         </section>
 
     </main>
+    
+    <barber-footer></barber-footer>
 </body>
 
 </html>

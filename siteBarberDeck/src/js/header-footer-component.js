@@ -1,6 +1,4 @@
-// ==========================================================================
 // COMPONENTE: HEADER (<barber-header>)
-// ==========================================================================
 class BarberHeader extends HTMLElement {
     connectedCallback() {
         fetch('../html/header.html')
@@ -13,9 +11,8 @@ class BarberHeader extends HTMLElement {
 }
 customElements.define('barber-header', BarberHeader);
 
-// ==========================================================================
+
 // COMPONENTE: FOOTER (<barber-footer>)
-// ==========================================================================
 class BarberFooter extends HTMLElement {
     connectedCallback() {
         fetch('../html/footer.html')
