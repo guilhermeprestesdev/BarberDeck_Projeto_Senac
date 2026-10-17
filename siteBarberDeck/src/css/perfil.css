@@ -1,0 +1,536 @@
+.pagina-perfil {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 4.5rem;
+    gap: 1.85rem;
+}
+
+/* ==========================================================================
+   1. BARRA DE ALTERNÂNCIA DE MODO (TESTE DE PERFIL E CABEÇALHO)
+   ========================================================================== */
+.barra-teste-modo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(245, 158, 11, 0.08);
+    border: 1px dashed var(--amber-border);
+    border-radius: var(--radius-lg);
+}
+
+.rotulo-teste-modo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--amber-primary);
+    letter-spacing: 0.02em;
+}
+
+.botoes-teste-modo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    background-color: var(--bg-surface);
+    padding: 4px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-card);
+}
+
+.botao-modo-teste {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.825rem;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-modo-teste:hover {
+    color: var(--text-primary);
+}
+
+.botao-modo-teste.ativo {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    box-shadow: var(--amber-glow);
+}
+
+.botao-modo-visitante:hover {
+    color: var(--status-closed-text);
+}
+
+/* ==========================================================================
+   2. CABEÇALHO E GRADE PRINCIPAL DA PÁGINA DE PERFIL
+   ========================================================================== */
+.secao-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cabecalho-pagina-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rotulo-topo-perfil {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--amber-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+}
+
+.titulo-perfil-pagina {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.grade-layout-perfil {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* ==========================================================================
+   3. COLUNA ESQUERDA: CARTÃO DE IDENTIDADE, FOTOS E PLANO
+   ========================================================================== */
+.cartao-resumo-perfil {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+    position: sticky;
+    top: 95px;
+    overflow: hidden;
+}
+
+/* Foto de Capa no Modo Barbearia */
+.capa-vitrine-barbearia {
+    width: calc(100% + 3.5rem);
+    margin: -1.75rem -1.75rem 0;
+    height: 145px;
+    position: relative;
+    background-color: var(--bg-surface-elevated);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.capa-vitrine-barbearia img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.8);
+}
+
+.botao-trocar-capa {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(9, 9, 11, 0.78);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--border-amber);
+    color: var(--amber-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-trocar-capa img {
+    width: 12px;
+    height: 12px;
+    filter: invert(72%) sepia(85%) saturate(1600%) hue-rotate(5deg);
+}
+
+.botao-trocar-capa:hover {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+}
+
+.botao-trocar-capa:hover img {
+    filter: brightness(0);
+}
+
+.bloco-foto-cliente,
+.bloco-foto-barbearia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.moldura-avatar-grande {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--amber-primary);
+    background-color: var(--bg-surface-elevated);
+    box-shadow: var(--amber-glow);
+}
+
+.moldura-avatar-grande.avatar-sobreposto {
+    margin-top: -56px;
+    position: relative;
+    z-index: 2;
+    background-color: var(--bg-card);
+}
+
+.moldura-avatar-grande img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.botao-trocar-foto {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--amber-primary);
+    background-color: var(--amber-tint);
+    border: 1px solid var(--border-amber);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-trocar-foto img {
+    width: 13px;
+    height: 13px;
+    filter: invert(72%) sepia(85%) saturate(1600%) hue-rotate(5deg);
+}
+
+.botao-trocar-foto:hover {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    box-shadow: var(--amber-glow);
+}
+
+.botao-trocar-foto:hover img {
+    filter: brightness(0);
+}
+
+.dados-destaque-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.selo-tipo-conta {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--amber-primary);
+    background-color: var(--amber-tint);
+    border: 1px solid var(--border-amber);
+    padding: 0.18rem 0.65rem;
+    border-radius: var(--radius-full);
+}
+
+.nome-destaque-perfil {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.subtitulo-destaque-perfil {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Estatísticas rápidas do Cliente */
+.grade-estatisticas-conta {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.caixa-estatistica-conta {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.caixa-estatistica-conta strong {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--amber-primary);
+}
+
+.caixa-estatistica-conta span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Card de Plano da Barbearia */
+.cartao-plano-ativo {
+    width: 100%;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-amber);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.topo-plano-ativo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.rotulo-plano-ativo {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.selo-plano-ativo {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radius-full);
+}
+
+.preco-plano-ativo {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--amber-primary);
+}
+
+/* Botões de rodapé da coluna esquerda */
+.acoes-rodape-perfil {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.botao-atalho-perfil {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.botao-atalho-perfil:hover {
+    border-color: var(--amber-primary);
+    color: var(--amber-primary);
+    background-color: var(--amber-tint);
+}
+
+.botao-sair-conta {
+    width: 100%;
+    padding: 0.72rem 1rem;
+    border-radius: var(--radius-md);
+    background-color: var(--status-closed-bg);
+    border: 1px solid var(--status-closed-border);
+    color: var(--status-closed-text);
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-sair-conta:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   4. COLUNA DIREITA: PAINÉIS E FORMULÁRIOS DE EDIÇÃO
+   ========================================================================== */
+.coluna-formularios-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.painel-edicao-perfil {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.cabecalho-painel-edicao {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.cabecalho-painel-edicao h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.cabecalho-painel-edicao p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.formulario-edicao-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.linha-formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.aviso-feedback-perfil {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.aviso-feedback-perfil.sucesso {
+    background-color: var(--status-open-bg);
+    border: 1px solid var(--status-open-border);
+    color: var(--status-open-text);
+}
+
+.aviso-feedback-perfil.erro {
+    background-color: var(--status-closed-bg);
+    border: 1px solid var(--status-closed-border);
+    color: var(--status-closed-text);
+}
+
+.rodape-formulario-perfil {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+}
+
+.botao-salvar-perfil {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    border: 1px solid var(--amber-primary);
+    border-radius: var(--radius-lg);
+    padding: 0.85rem 1.85rem;
+    font-family: inherit;
+    font-size: 0.925rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--amber-glow);
+}
+
+.botao-salvar-perfil:hover {
+    background-color: var(--amber-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--amber-glow-strong);
+}
+
+.botao-salvar-secundario {
+    background-color: var(--amber-tint);
+    color: var(--amber-primary);
+    border: 1px solid var(--border-amber);
+    border-radius: var(--radius-lg);
+    padding: 0.8rem 1.65rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-salvar-secundario:hover {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    box-shadow: var(--amber-glow);
+}
+
+/* ==========================================================================
+   5. RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 960px) {
+    .grade-layout-perfil {
+        grid-template-columns: 1fr;
+    }
+
+    .cartao-resumo-perfil {
+        position: static;
+    }
+}
+
+@media (max-width: 640px) {
+    .pagina-perfil {
+        padding: 1.25rem 1rem 3.5rem;
+    }
+
+    .painel-edicao-perfil {
+        padding: 1.35rem 1.15rem;
+    }
+
+    .linha-formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .botao-salvar-perfil,
+    .botao-salvar-secundario {
+        width: 100%;
+    }
+}

@@ -22,8 +22,38 @@
     <nav class="navegacao-estrutural" aria-label="Navegação estrutural">
         <a href="index.html">Agendar</a>
         <span class="separador-navegacao" aria-hidden="true">&gt;</span>
-        <span class="paragrafo-agendar" id="nome-barbearia">NomeBarbearia</span>
+        <span class="paragrafo-agendar" id="nome-barbearia">Barbearia Navalha de Ouro</span>
     </nav>
+
+    <!-- Cabeçalho Informativo da Barbearia Selecionada -->
+    <section class="cabecalho-vitrine-agendamento" aria-label="Detalhes da barbearia">
+        <div class="cartao-vitrine-agendamento">
+            <figure class="foto-vitrine-agendamento">
+                <img src="../images/imagem-topo-barber.jpg" alt="Ambiente da barbearia" id="vitrine-foto-barbearia">
+            </figure>
+
+            <div class="info-vitrine-agendamento">
+                <div class="linha-topo-vitrine">
+                    <h1 id="vitrine-titulo-barbearia">Barbearia Navalha de Ouro</h1>
+                    <span class="selo-status-vitrine aberto" id="vitrine-selo-status">Aberta agora</span>
+                    <span class="avaliacao-vitrine" id="vitrine-avaliacao">⭐ 4.9 (128 avaliações)</span>
+                </div>
+                <p class="descricao-vitrine" id="vitrine-descricao-barbearia">
+                    Tradição em cortes clássicos, degradê na navalha e barboterapia com toalha quente no coração de Erechim.
+                </p>
+                <div class="metadados-vitrine">
+                    <span class="item-meta-vitrine" id="vitrine-endereco-barbearia">
+                        <img src="../icons/icon-local.svg" alt="" aria-hidden="true">
+                        Av. Maurício Cardoso, 500 - Centro, Erechim - RS
+                    </span>
+                    <span class="item-meta-vitrine" id="vitrine-whatsapp-barbearia">
+                        <img src="../icons/icon-whatsapp.svg" alt="" aria-hidden="true">
+                        (54) 99985-3855
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Indicador de progresso (4 etapas numeradas) -->
     <nav class="navegacao-progresso" aria-label="Progresso do agendamento">
@@ -50,252 +80,43 @@
 
             <!-- PASSO 1: ESCOLHA OS SERVIÇOS -->
             <section id="passo-1" class="etapa-fluxo">
-                <h2>ESCOLHA OS SERVIÇOS</h2>
+                <div class="cabecalho-etapa-fluxo">
+                    <h2>ESCOLHA OS SERVIÇOS</h2>
+                    <p class="aviso-validacao-etapa" id="aviso-erro-servicos" hidden>Selecione pelo menos 1 serviço para avançar.</p>
+                </div>
+
                 <fieldset id="lista-servicos">
                     <legend>Selecione um ou mais serviços</legend>
-
-                    <article class="cartao-servico">
-                        <label class="rotulo-servico" for="servico-1">
-                            <span class="cabecalho-servico">
-                                <span class="nome-servico">Nome do Serviço</span>
-                                <span class="descricao-servico">Descrição simples</span>
-                            </span>
-                            <input type="checkbox" id="servico-1" name="servicos" value="id_1" data-nome="Serviço 1" data-duracao="45" data-preco="45.00">
-                        </label>
-                        <div class="detalhes-servico">
-                            <span class="duracao">
-                                <span class="rotulo-duracao">
-                                    <img src="../icons/icon-calendar.svg" alt="" aria-hidden="true" width="14" height="14">
-                                    Duração
-                                </span>
-                                <span class="tempo-duracao">000 min</span>
-                            </span>
-                            <span class="valor-servico">R$ Valor</span>
-                        </div>
-                    </article>
-
-                    <article class="cartao-servico">
-                        <label class="rotulo-servico" for="servico-2">
-                            <span class="cabecalho-servico">
-                                <span class="nome-servico">Nome do Serviço</span>
-                                <span class="descricao-servico">Descrição simples</span>
-                            </span>
-                            <input type="checkbox" id="servico-2" name="servicos" value="id_2" data-nome="Serviço 2" data-duracao="30" data-preco="35.00" checked>
-                        </label>
-                        <div class="detalhes-servico">
-                            <span class="duracao">
-                                <span class="rotulo-duracao">
-                                    <img src="../icons/icon-calendar.svg" alt="" aria-hidden="true" width="14" height="14">
-                                    Duração
-                                </span>
-                                <span class="tempo-duracao">000 min</span>
-                            </span>
-                            <span class="valor-servico">R$ Valor</span>
-                        </div>
-                    </article>
-
-                    <article class="cartao-servico">
-                        <label class="rotulo-servico" for="servico-3">
-                            <span class="cabecalho-servico">
-                                <span class="nome-servico">Nome do Serviço</span>
-                                <span class="descricao-servico">Descrição simples</span>
-                            </span>
-                            <input type="checkbox" id="servico-3" name="servicos" value="id_3" data-nome="Serviço 3" data-duracao="75" data-preco="75.00" checked>
-                        </label>
-                        <div class="detalhes-servico">
-                            <span class="duracao">
-                                <span class="rotulo-duracao">
-                                    <img src="../icons/icon-calendar.svg" alt="" aria-hidden="true" width="14" height="14">
-                                    Duração
-                                </span>
-                                <span class="tempo-duracao">000 min</span>
-                            </span>
-                            <span class="valor-servico">R$ Valor</span>
-                        </div>
-                    </article>
-
-                    <article class="cartao-servico">
-                        <label class="rotulo-servico" for="servico-4">
-                            <span class="cabecalho-servico">
-                                <span class="nome-servico">Nome do Serviço</span>
-                                <span class="descricao-servico">Descrição simples</span>
-                            </span>
-                            <input type="checkbox" id="servico-4" name="servicos" value="id_4" data-nome="Serviço 4" data-duracao="15" data-preco="20.00">
-                        </label>
-                        <div class="detalhes-servico">
-                            <span class="duracao">
-                                <span class="rotulo-duracao">
-                                    <img src="../icons/icon-calendar.svg" alt="" aria-hidden="true" width="14" height="14">
-                                    Duração
-                                </span>
-                                <span class="tempo-duracao">000 min</span>
-                            </span>
-                            <span class="valor-servico">R$ Valor</span>
-                        </div>
-                    </article>
-
-                    <article class="cartao-servico">
-                        <label class="rotulo-servico" for="servico-5">
-                            <span class="cabecalho-servico">
-                                <span class="nome-servico">Nome do Serviço</span>
-                                <span class="descricao-servico">Descrição simples</span>
-                            </span>
-                            <input type="checkbox" id="servico-5" name="servicos" value="id_5" data-nome="Serviço 5" data-duracao="20" data-preco="30.00">
-                        </label>
-                        <div class="detalhes-servico">
-                            <span class="duracao">
-                                <span class="rotulo-duracao">
-                                    <img src="../icons/icon-calendar.svg" alt="" aria-hidden="true" width="14" height="14">
-                                    Duração
-                                </span>
-                                <span class="tempo-duracao">000 min</span>
-                            </span>
-                            <span class="valor-servico">R$ Valor</span>
-                        </div>
-                    </article>
-
-                    <article class="cartao-servico">
-                        <label class="rotulo-servico" for="servico-6">
-                            <span class="cabecalho-servico">
-                                <span class="nome-servico">Nome do Serviço</span>
-                                <span class="descricao-servico">Descrição simples</span>
-                            </span>
-                            <input type="checkbox" id="servico-6" name="servicos" value="id_6" data-nome="Serviço 6" data-duracao="15" data-preco="15.00" checked>
-                        </label>
-                        <div class="detalhes-servico">
-                            <span class="duracao">
-                                <span class="rotulo-duracao">
-                                    <img src="../icons/icon-calendar.svg" alt="" aria-hidden="true" width="14" height="14">
-                                    Duração
-                                </span>
-                                <span class="tempo-duracao">000 min</span>
-                            </span>
-                            <span class="valor-servico">R$ Valor</span>
-                        </div>
-                    </article>
+                    <!-- Preenchido dinamicamente por agendamento.js a partir dos serviços ativos da barbearia -->
                 </fieldset>
             </section>
 
             <!-- PASSO 2: ESCOLHA O BARBEIRO (inicialmente oculto via 'hidden') -->
             <section id="passo-2" class="etapa-fluxo" hidden>
-                <h2>ESCOLHA O BARBEIRO</h2>
+                <div class="cabecalho-etapa-fluxo">
+                    <h2>ESCOLHA O BARBEIRO</h2>
+                    <p class="subtitulo-etapa-fluxo">Profissionais disponíveis para os serviços selecionados</p>
+                </div>
+
                 <fieldset id="lista-barbeiros">
                     <legend>Selecione um profissional</legend>
-
-                    <article class="cartao-barbeiro">
-                        <label class="rotulo-barbeiro" for="barbeiro-1">
-                            <input type="radio" id="barbeiro-1" name="barbeiro" value="id_barbeiro_1" data-nome="Nome do barbeiro" data-foto="../images/imagem-topo-barber.jpg" checked>
-                            <span class="foto-perfil">
-                                <img src="../images/imagem-topo-barber.jpg" alt="Retrato do barbeiro profissional 1" width="84" height="84">
-                            </span>
-                            <span class="info-barbeiro">
-                                <span class="nome-profissional">Nome do Barbeiro</span>
-                                <span class="especialidade">Especialidade</span>
-                                <span class="avaliacao">
-                                    <img src="../icons/icon-star.svg" alt="" aria-hidden="true" width="15" height="15">
-                                    <span class="nota">Nota (qtd avaliações)</span>
-                                </span>
-                            </span>
-                        </label>
-                    </article>
-
-                    <article class="cartao-barbeiro">
-                        <label class="rotulo-barbeiro" for="barbeiro-2">
-                            <input type="radio" id="barbeiro-2" name="barbeiro" value="id_barbeiro_2" data-nome="Nome do barbeiro" data-foto="../images/imagem-topo-client.jpg">
-                            <span class="foto-perfil">
-                                <img src="../images/imagem-topo-client.jpg" alt="Retrato do barbeiro profissional 2" width="84" height="84">
-                            </span>
-                            <span class="info-barbeiro">
-                                <span class="nome-profissional">Nome do Barbeiro</span>
-                                <span class="especialidade">Especialidade</span>
-                                <span class="avaliacao">
-                                    <img src="../icons/icon-star.svg" alt="" aria-hidden="true" width="15" height="15">
-                                    <span class="nota">Nota (qtd avaliações)</span>
-                                </span>
-                            </span>
-                        </label>
-                    </article>
-
-                    <article class="cartao-barbeiro">
-                        <label class="rotulo-barbeiro" for="barbeiro-3">
-                            <input type="radio" id="barbeiro-3" name="barbeiro" value="id_barbeiro_3" data-nome="Nome do barbeiro" data-foto="../images/imagem-topo-barber.jpg">
-                            <span class="foto-perfil">
-                                <img src="../images/imagem-topo-barber.jpg" alt="Retrato do barbeiro profissional 3" width="84" height="84">
-                            </span>
-                            <span class="info-barbeiro">
-                                <span class="nome-profissional">Nome do Barbeiro</span>
-                                <span class="especialidade">Especialidade</span>
-                                <span class="avaliacao">
-                                    <img src="../icons/icon-star.svg" alt="" aria-hidden="true" width="15" height="15">
-                                    <span class="nota">Nota (qtd avaliações)</span>
-                                </span>
-                            </span>
-                        </label>
-                    </article>
-
-                    <article class="cartao-barbeiro">
-                        <label class="rotulo-barbeiro" for="barbeiro-4">
-                            <input type="radio" id="barbeiro-4" name="barbeiro" value="id_barbeiro_4" data-nome="Nome do barbeiro" data-foto="../images/imagem-topo-client.jpg">
-                            <span class="foto-perfil">
-                                <img src="../images/imagem-topo-client.jpg" alt="Retrato do barbeiro profissional 4" width="84" height="84">
-                            </span>
-                            <span class="info-barbeiro">
-                                <span class="nome-profissional">Nome do Barbeiro</span>
-                                <span class="especialidade">Especialidade</span>
-                                <span class="avaliacao">
-                                    <img src="../icons/icon-star.svg" alt="" aria-hidden="true" width="15" height="15">
-                                    <span class="nota">Nota (qtd avaliações)</span>
-                                </span>
-                            </span>
-                        </label>
-                    </article>
-
-                    <article class="cartao-barbeiro">
-                        <label class="rotulo-barbeiro" for="barbeiro-5">
-                            <input type="radio" id="barbeiro-5" name="barbeiro" value="id_barbeiro_5" data-nome="Nome do barbeiro" data-foto="../images/imagem-topo-barber.jpg">
-                            <span class="foto-perfil">
-                                <img src="../images/imagem-topo-barber.jpg" alt="Retrato do barbeiro profissional 5" width="84" height="84">
-                            </span>
-                            <span class="info-barbeiro">
-                                <span class="nome-profissional">Nome do Barbeiro</span>
-                                <span class="especialidade">Especialidade</span>
-                                <span class="avaliacao">
-                                    <img src="../icons/icon-star.svg" alt="" aria-hidden="true" width="15" height="15">
-                                    <span class="nota">Nota (qtd avaliações)</span>
-                                </span>
-                            </span>
-                        </label>
-                    </article>
-
-                    <article class="cartao-barbeiro">
-                        <label class="rotulo-barbeiro" for="barbeiro-6">
-                            <input type="radio" id="barbeiro-6" name="barbeiro" value="id_barbeiro_6" data-nome="Nome do barbeiro" data-foto="../images/imagem-topo-client.jpg">
-                            <span class="foto-perfil">
-                                <img src="../images/imagem-topo-client.jpg" alt="Retrato do barbeiro profissional 6" width="84" height="84">
-                            </span>
-                            <span class="info-barbeiro">
-                                <span class="nome-profissional">Nome do Barbeiro</span>
-                                <span class="especialidade">Especialidade</span>
-                                <span class="avaliacao">
-                                    <img src="../icons/icon-star.svg" alt="" aria-hidden="true" width="15" height="15">
-                                    <span class="nota">Nota (qtd avaliações)</span>
-                                </span>
-                            </span>
-                        </label>
-                    </article>
+                    <!-- Preenchido dinamicamente por agendamento.js -->
                 </fieldset>
             </section>
 
             <!-- PASSO 3: ESCOLHA DATA E HORÁRIO (inicialmente oculto via 'hidden') -->
             <section id="passo-3" class="etapa-fluxo" hidden>
-                <h2>ESCOLHA DATA E HORÁRIO</h2>
+                <div class="cabecalho-etapa-fluxo">
+                    <h2>ESCOLHA DATA E HORÁRIO</h2>
+                    <p class="subtitulo-etapa-fluxo" id="subtitulo-janela-funcionamento">Horários calculados conforme a duração total dos serviços</p>
+                </div>
 
                 <div class="selecao-data-hora">
                     <!-- Calendário de navegação de meses -->
                     <div id="container-calendario" class="painel-calendario">
                         <div class="cabecalho-calendario">
                             <button type="button" id="botao-mes-anterior" aria-label="Mês anterior">&lt;</button>
-                            <span id="mes-ano-atual">SETEMBRO</span>
+                            <span id="mes-ano-atual">OUTUBRO 2026</span>
                             <button type="button" id="botao-proximo-mes" aria-label="Próximo mês">&gt;</button>
                         </div>
 
@@ -309,129 +130,15 @@
                                 <span>Sex</span>
                                 <span>Sáb</span>
                             </div>
-                            <!-- Grade de dias do mês -->
-                            <div class="dias-mes" id="container-dias-mes">
-                                <button type="button" class="botao-dia-calendario" disabled>30</button>
-                                <button type="button" class="botao-dia-calendario" disabled>31</button>
-                                <button type="button" class="botao-dia-calendario">01</button>
-                                <button type="button" class="botao-dia-calendario">02</button>
-                                <button type="button" class="botao-dia-calendario">03</button>
-                                <button type="button" class="botao-dia-calendario">04</button>
-                                <button type="button" class="botao-dia-calendario">05</button>
-                                <button type="button" class="botao-dia-calendario">06</button>
-                                <button type="button" class="botao-dia-calendario">07</button>
-                                <button type="button" class="botao-dia-calendario">08</button>
-                                <button type="button" class="botao-dia-calendario">09</button>
-                                <button type="button" class="botao-dia-calendario">10</button>
-                                <button type="button" class="botao-dia-calendario">11</button>
-                                <button type="button" class="botao-dia-calendario">12</button>
-                                <button type="button" class="botao-dia-calendario">13</button>
-                                <button type="button" class="botao-dia-calendario">14</button>
-                                <button type="button" class="botao-dia-calendario selecionado">15</button>
-                                <button type="button" class="botao-dia-calendario">16</button>
-                                <button type="button" class="botao-dia-calendario">17</button>
-                                <button type="button" class="botao-dia-calendario">18</button>
-                                <button type="button" class="botao-dia-calendario">19</button>
-                                <button type="button" class="botao-dia-calendario">20</button>
-                                <button type="button" class="botao-dia-calendario">21</button>
-                                <button type="button" class="botao-dia-calendario">22</button>
-                                <button type="button" class="botao-dia-calendario">23</button>
-                                <button type="button" class="botao-dia-calendario">24</button>
-                                <button type="button" class="botao-dia-calendario">25</button>
-                                <button type="button" class="botao-dia-calendario">26</button>
-                                <button type="button" class="botao-dia-calendario">27</button>
-                                <button type="button" class="botao-dia-calendario">28</button>
-                                <button type="button" class="botao-dia-calendario">29</button>
-                                <button type="button" class="botao-dia-calendario">30</button>
-                            </div>
+                            <!-- Grade de dias do mês renderizada dinamicamente -->
+                            <div class="dias-mes" id="container-dias-mes"></div>
                         </div>
                     </div>
 
                     <!-- Grade de Horários Disponíveis -->
                     <fieldset id="container-horarios" class="painel-horarios">
                         <legend>Horários Disponíveis</legend>
-                        <div class="grade-horarios" id="lista-horarios-disponiveis">
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="09:00" checked>
-                                <span>09:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="09:30">
-                                <span>09:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="10:00">
-                                <span>10:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="10:30">
-                                <span>10:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="11:00">
-                                <span>11:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="11:30">
-                                <span>11:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="13:00">
-                                <span>13:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="13:30">
-                                <span>13:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="14:00">
-                                <span>14:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="14:30">
-                                <span>14:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="15:00">
-                                <span>15:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="15:30">
-                                <span>15:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="16:00">
-                                <span>16:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="16:30">
-                                <span>16:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="17:00">
-                                <span>17:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="17:30">
-                                <span>17:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="18:00">
-                                <span>18:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="18:30">
-                                <span>18:30</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="19:00">
-                                <span>19:00</span>
-                            </label>
-                            <label class="cartao-horario">
-                                <input type="radio" name="horario" value="19:30">
-                                <span>19:30</span>
-                            </label>
-                        </div>
+                        <div class="grade-horarios" id="lista-horarios-disponiveis"></div>
                     </fieldset>
                 </div>
             </section>
@@ -441,27 +148,14 @@
             <div class="cartao-resumo-interno">
                 <header class="resumo-topo">
                     <h3>Resumo</h3>
-                    <p id="resumo-nome-barbearia">NomeBarbearia</p>
+                    <p id="resumo-nome-barbearia">Barbearia Navalha de Ouro</p>
                 </header>
                 <hr>
 
                 <!-- 1. Serviços Selecionados (Visível desde o Passo 1) -->
                 <section class="secao-resumo-servicos">
                     <h4>Serviços Selecionados</h4>
-                    <ul id="resumo-lista-servicos">
-                        <li>
-                            <span class="item-servico">Serviço 1</span>
-                            <span class="item-valor">R$ valor</span>
-                        </li>
-                        <li>
-                            <span class="item-servico">Serviço 2</span>
-                            <span class="item-valor">R$ valor</span>
-                        </li>
-                        <li>
-                            <span class="item-servico">Serviço 3</span>
-                            <span class="item-valor">R$ valor</span>
-                        </li>
-                    </ul>
+                    <ul id="resumo-lista-servicos"></ul>
                 </section>
                 <hr id="divisor-barbeiro" hidden>
 
@@ -470,13 +164,16 @@
                     <figure class="foto-barbeiro-resumo">
                         <img id="resumo-foto-barbeiro" src="../images/imagem-topo-barber.jpg" alt="Foto do barbeiro selecionado" width="46" height="46">
                     </figure>
-                    <span id="resumo-nome-barbeiro">Nome do barbeiro</span>
+                    <div class="dados-barbeiro-resumo">
+                        <span id="resumo-nome-barbeiro">Lucas Ferreira</span>
+                        <small id="resumo-especialidade-barbeiro">Degradê e Barboterapia</small>
+                    </div>
                 </section>
                 <hr id="divisor-data-hora" hidden>
 
                 <!-- 3. Data e Horário (Revelado a partir do Passo 3) -->
                 <section id="resumo-secao-data-hora" class="resumo-data-hora" hidden>
-                    <p id="resumo-data-hora-texto">15/09/2026 às 09:00</p>
+                    <p id="resumo-data-hora-texto">20/10/2026 às 09:00</p>
                 </section>
                 <hr>
 
@@ -485,13 +182,13 @@
                     <p class="resumo-duracao">
                         <span class="rotulo-resumo-icone">
                             <img src="../icons/icon-calendar.svg" alt="" aria-hidden="true" width="15" height="15">
-                            <span>Duração</span>
+                            <span>Duração Total</span>
                         </span>
-                        <strong id="resumo-duracao-total">000 min</strong>
+                        <strong id="resumo-duracao-total">0 min</strong>
                     </p>
                     <p class="resumo-valor">
                         <span>Valor Total</span>
-                        <strong id="resumo-valor-total">R$ valor</strong>
+                        <strong id="resumo-valor-total">R$ 0,00</strong>
                     </p>
                 </div>
             </div>

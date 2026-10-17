@@ -21,7 +21,7 @@
     <main class="conteudo-principal pagina-dashboard" id="container-pagina-dashboard">
 
         <section class="secao-topo-dashboard" aria-labelledby="titulo-nome-barbearia">
-            <p class="rotulo-pagina-dashboard">Dashboard (para barbearia)</p>
+            <p class="rotulo-pagina-dashboard">Dashboard Operacional (Barbearia)</p>
 
             <div class="barra-identificacao-barbearia">
                 <div class="bloco-titulo-barbearia">
@@ -29,15 +29,22 @@
                     <p class="subtitulo-visao-unidade">
                         <span id="mes-ano-referencia">Outubro 2026</span>
                         <span class="separador-barra" aria-hidden="true">|</span>
-                        <span>Visão geral da unidade</span>
+                        <span id="endereco-resumo-dashboard">Av. Maurício Cardoso, 500 - Centro, Erechim - RS</span>
                     </p>
                 </div>
 
-                <!-- Botão / Selo interativo para alternar Barbearia aberta / fechada -->
-                <button type="button" class="botao-status-barbearia aberta" id="botao-status-barbearia" aria-pressed="true" title="Clique para alternar entre Barbearia aberta e fechada">
-                    <span class="indicador-ponto-status" aria-hidden="true"></span>
-                    <span class="texto-status-barbearia" id="texto-status-barbearia">Barbearia aberta</span>
-                </button>
+                <div class="acoes-topo-dashboard">
+                    <a href="perfil.html?modo=barbearia" class="botao-editar-barbearia-topo">
+                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                        <span>Editar Dados da Conta</span>
+                    </a>
+
+                    <!-- Botão / Selo interativo para alternar Barbearia aberta / fechada -->
+                    <button type="button" class="botao-status-barbearia aberta" id="botao-status-barbearia" aria-pressed="true" title="Clique para alternar entre Barbearia aberta e fechada">
+                        <span class="indicador-ponto-status" aria-hidden="true"></span>
+                        <span class="texto-status-barbearia" id="texto-status-barbearia">Barbearia aberta</span>
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -68,7 +75,7 @@
                     <h2 class="titulo-cartao-metrica">Atendimentos<br>concluídos</h2>
                 </header>
 
-                <strong class="valor-principal-metrica" id="metrica-atendimentos">312</strong>
+                <strong class="valor-principal-metrica" id="metrica-atendimentos">310</strong>
 
                 <p class="comparativo-metrica positivo">
                     <span class="destaque-comparativo">28 +</span> vs mês anterior
@@ -84,10 +91,10 @@
                     <h2 class="titulo-cartao-metrica">Ticket Médio</h2>
                 </header>
 
-                <strong class="valor-principal-metrica" id="metrica-ticket-medio">R$ 59,13</strong>
+                <strong class="valor-principal-metrica" id="metrica-ticket-medio">R$ 59,52</strong>
 
-                <p class="comparativo-metrica negativo">
-                    <span class="destaque-comparativo">3% -</span> vs mês anterior
+                <p class="comparativo-metrica positivo">
+                    <span class="destaque-comparativo">Calculado</span> sobre os atendimentos
                 </p>
             </article>
 
@@ -100,7 +107,7 @@
                 <h2 class="titulo-painel-dashboard">Horário de funcionamento</h2>
 
                 <form class="formulario-horarios" id="formulario-horarios" novalidate>
-                    <ul class="lista-dias-funcionamento">
+                    <ul class="lista-dias-funcionamento" id="lista-dias-funcionamento">
 
                         <!-- Segunda-feira -->
                         <li class="linha-dia-funcionamento" data-dia="segunda">
@@ -204,7 +211,7 @@
                             </div>
                         </li>
 
-                        <!-- Domingo (Inicialmente desativado conforme referência) -->
+                        <!-- Domingo -->
                         <li class="linha-dia-funcionamento dia-fechado" data-dia="domingo">
                             <div class="bloco-dia-chave">
                                 <label class="chave-seletora" aria-label="Ativar funcionamento no Domingo">
@@ -252,288 +259,13 @@
 
                 <div class="conteudo-aba-dashboard" id="secao-lista-barbeiros" role="tabpanel" aria-labelledby="aba-barbeiros">
                     <ul class="lista-itens-dashboard" id="lista-barbeiros-dashboard">
-
-                        <!-- Barbeiro 1 -->
-                        <li class="item-lista-dashboard item-barbeiro" data-id="barb-1" data-nome="Lucas Ferreira" data-especialidade="Degradê e Barboterapia" data-atendimentos="98">
-                            <div class="bloco-esquerdo-barbeiro">
-                                <figure class="foto-barbeiro-dashboard">
-                                    <img src="../images/imagem-topo-barber.jpg" alt="Foto de Lucas Ferreira">
-                                </figure>
-                                <div class="dados-item-dashboard">
-                                    <h3 class="titulo-item-dashboard">Lucas Ferreira</h3>
-                                    <p class="subtitulo-item-dashboard">Degradê e Barboterapia</p>
-                                    <span class="meta-item-dashboard">98 atendimentos</span>
-                                </div>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Lucas Ferreira">
-                                    <input type="checkbox" class="checkbox-status-item" checked>
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-barbeiro" aria-label="Editar Lucas Ferreira" title="Editar barbeiro">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Lucas Ferreira" title="Excluir barbeiro">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Barbeiro 2 -->
-                        <li class="item-lista-dashboard item-barbeiro" data-id="barb-2" data-nome="Rafael Souza" data-especialidade="Corte Clássico e Tesoura" data-atendimentos="76">
-                            <div class="bloco-esquerdo-barbeiro">
-                                <figure class="foto-barbeiro-dashboard">
-                                    <img src="../images/imagem-topo-client.jpg" alt="Foto de Rafael Souza">
-                                </figure>
-                                <div class="dados-item-dashboard">
-                                    <h3 class="titulo-item-dashboard">Rafael Souza</h3>
-                                    <p class="subtitulo-item-dashboard">Corte Clássico e Tesoura</p>
-                                    <span class="meta-item-dashboard">76 atendimentos</span>
-                                </div>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Rafael Souza">
-                                    <input type="checkbox" class="checkbox-status-item" checked>
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-barbeiro" aria-label="Editar Rafael Souza" title="Editar barbeiro">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Rafael Souza" title="Excluir barbeiro">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Barbeiro 3 -->
-                        <li class="item-lista-dashboard item-barbeiro" data-id="barb-3" data-nome="Mateus Lima" data-especialidade="Freestyle e Pigmentação" data-atendimentos="64">
-                            <div class="bloco-esquerdo-barbeiro">
-                                <figure class="foto-barbeiro-dashboard">
-                                    <img src="../images/imagem-topo-barber.jpg" alt="Foto de Mateus Lima">
-                                </figure>
-                                <div class="dados-item-dashboard">
-                                    <h3 class="titulo-item-dashboard">Mateus Lima</h3>
-                                    <p class="subtitulo-item-dashboard">Freestyle e Pigmentação</p>
-                                    <span class="meta-item-dashboard">64 atendimentos</span>
-                                </div>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Mateus Lima">
-                                    <input type="checkbox" class="checkbox-status-item" checked>
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-barbeiro" aria-label="Editar Mateus Lima" title="Editar barbeiro">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Mateus Lima" title="Excluir barbeiro">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Barbeiro 4 -->
-                        <li class="item-lista-dashboard item-barbeiro" data-id="barb-4" data-nome="Diego Almeida" data-especialidade="Barba Modelada e Toalha Quente" data-atendimentos="52">
-                            <div class="bloco-esquerdo-barbeiro">
-                                <figure class="foto-barbeiro-dashboard">
-                                    <img src="../images/imagem-topo-client.jpg" alt="Foto de Diego Almeida">
-                                </figure>
-                                <div class="dados-item-dashboard">
-                                    <h3 class="titulo-item-dashboard">Diego Almeida</h3>
-                                    <p class="subtitulo-item-dashboard">Barba Modelada e Toalha Quente</p>
-                                    <span class="meta-item-dashboard">52 atendimentos</span>
-                                </div>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Diego Almeida">
-                                    <input type="checkbox" class="checkbox-status-item" checked>
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-barbeiro" aria-label="Editar Diego Almeida" title="Editar barbeiro">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Diego Almeida" title="Excluir barbeiro">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Barbeiro 5 (Inicialmente desativado conforme imagem de referência 1) -->
-                        <li class="item-lista-dashboard item-barbeiro item-inativo" data-id="barb-5" data-nome="Henrique Rocha" data-especialidade="Cortes Infantis e Hidratação" data-atendimentos="22">
-                            <div class="bloco-esquerdo-barbeiro">
-                                <figure class="foto-barbeiro-dashboard">
-                                    <img src="../images/imagem-topo-barber.jpg" alt="Foto de Henrique Rocha">
-                                </figure>
-                                <div class="dados-item-dashboard">
-                                    <h3 class="titulo-item-dashboard">Henrique Rocha</h3>
-                                    <p class="subtitulo-item-dashboard">Cortes Infantis e Hidratação</p>
-                                    <span class="meta-item-dashboard">22 atendimentos</span>
-                                </div>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Henrique Rocha">
-                                    <input type="checkbox" class="checkbox-status-item">
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-barbeiro" aria-label="Editar Henrique Rocha" title="Editar barbeiro">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Henrique Rocha" title="Excluir barbeiro">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
+                        <!-- Renderizado dinamicamente por dashboard.js -->
                     </ul>
                 </div>
 
                 <div class="conteudo-aba-dashboard" id="secao-lista-servicos" role="tabpanel" aria-labelledby="aba-servicos" hidden>
                     <ul class="lista-itens-dashboard" id="lista-servicos-dashboard">
-
-                        <!-- Serviço 1: corte degradê [corte] -->
-                        <li class="item-lista-dashboard item-servico" data-id="serv-1" data-nome="Corte degradê" data-categoria="corte" data-preco="45,00">
-                            <div class="dados-item-dashboard">
-                                <div class="linha-titulo-servico">
-                                    <h3 class="titulo-item-dashboard">Corte degradê</h3>
-                                    <span class="etiqueta-categoria-servico">corte</span>
-                                </div>
-                                <strong class="preco-item-servico">R$ 45,00</strong>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Corte degradê">
-                                    <input type="checkbox" class="checkbox-status-item" checked>
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-servico" aria-label="Editar Corte degradê" title="Editar serviço">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Corte degradê" title="Excluir serviço">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Serviço 2: corte tradicional [corte] -->
-                        <li class="item-lista-dashboard item-servico" data-id="serv-2" data-nome="Corte tradicional" data-categoria="corte" data-preco="40,00">
-                            <div class="dados-item-dashboard">
-                                <div class="linha-titulo-servico">
-                                    <h3 class="titulo-item-dashboard">Corte tradicional</h3>
-                                    <span class="etiqueta-categoria-servico">corte</span>
-                                </div>
-                                <strong class="preco-item-servico">R$ 40,00</strong>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Corte tradicional">
-                                    <input type="checkbox" class="checkbox-status-item" checked>
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-servico" aria-label="Editar Corte tradicional" title="Editar serviço">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Corte tradicional" title="Excluir serviço">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Serviço 3: barboterapia [barba] -->
-                        <li class="item-lista-dashboard item-servico" data-id="serv-3" data-nome="Barboterapia" data-categoria="barba" data-preco="35,00">
-                            <div class="dados-item-dashboard">
-                                <div class="linha-titulo-servico">
-                                    <h3 class="titulo-item-dashboard">Barboterapia</h3>
-                                    <span class="etiqueta-categoria-servico">barba</span>
-                                </div>
-                                <strong class="preco-item-servico">R$ 35,00</strong>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Barboterapia">
-                                    <input type="checkbox" class="checkbox-status-item" checked>
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-servico" aria-label="Editar Barboterapia" title="Editar serviço">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Barboterapia" title="Excluir serviço">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Serviço 4: Hidratação capilar [tratamento] -->
-                        <li class="item-lista-dashboard item-servico" data-id="serv-4" data-nome="Hidratação capilar" data-categoria="tratamento" data-preco="50,00">
-                            <div class="dados-item-dashboard">
-                                <div class="linha-titulo-servico">
-                                    <h3 class="titulo-item-dashboard">Hidratação capilar</h3>
-                                    <span class="etiqueta-categoria-servico">tratamento</span>
-                                </div>
-                                <strong class="preco-item-servico">R$ 50,00</strong>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Hidratação capilar">
-                                    <input type="checkbox" class="checkbox-status-item" checked>
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-servico" aria-label="Editar Hidratação capilar" title="Editar serviço">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Hidratação capilar" title="Excluir serviço">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Serviço 5: corte + barba [combo] (Inicialmente desativado conforme referência 2) -->
-                        <li class="item-lista-dashboard item-servico item-inativo" data-id="serv-5" data-nome="Corte + barba" data-categoria="combo" data-preco="75,00">
-                            <div class="dados-item-dashboard">
-                                <div class="linha-titulo-servico">
-                                    <h3 class="titulo-item-dashboard">Corte + barba</h3>
-                                    <span class="etiqueta-categoria-servico">combo</span>
-                                </div>
-                                <strong class="preco-item-servico">R$ 75,00</strong>
-                            </div>
-
-                            <div class="controles-item-dashboard">
-                                <label class="chave-seletora" aria-label="Ativar ou desativar Corte + barba">
-                                    <input type="checkbox" class="checkbox-status-item">
-                                    <span class="trilho-chave"></span>
-                                </label>
-                                <div class="acoes-icone-dashboard">
-                                    <button type="button" class="botao-icone-dashboard acao-editar" data-acao="editar-servico" aria-label="Editar Corte + barba" title="Editar serviço">
-                                        <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
-                                    </button>
-                                    <button type="button" class="botao-icone-dashboard acao-excluir" data-acao="excluir-item" aria-label="Excluir Corte + barba" title="Excluir serviço">
-                                        <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-
+                        <!-- Renderizado dinamicamente por dashboard.js -->
                     </ul>
                 </div>
 
@@ -543,6 +275,7 @@
 
     </main>
 
+    <!-- MODAL PARA ADICIONAR / EDITAR BARBEIRO -->
     <dialog class="modal-dashboard" id="modal-dashboard-barbeiro">
         <div class="cartao-modal-dashboard">
             <button type="button" class="botao-fechar" id="fechar-modal-barbeiro" aria-label="Fechar">
@@ -550,9 +283,20 @@
             </button>
 
             <h3 class="titulo-modal-dashboard" id="titulo-modal-barbeiro">Editar Barbeiro</h3>
-            <p class="subtitulo-modal-dashboard">Atualize as informações do profissional da equipe</p>
+            <p class="subtitulo-modal-dashboard">Configure os dados, a foto e os serviços realizados pelo profissional</p>
 
             <form class="formulario-modal-dashboard" id="formulario-modal-barbeiro">
+                <div class="bloco-foto-modal-barbeiro">
+                    <figure class="preview-avatar-modal">
+                        <img src="../images/imagem-topo-barber.jpg" alt="Preview da foto do barbeiro" id="preview-foto-modal-barbeiro">
+                    </figure>
+                    <div class="controles-foto-modal">
+                        <label for="upload-foto-modal-barbeiro" class="botao-upload-modal">Escolher Foto do Barbeiro</label>
+                        <input type="file" id="upload-foto-modal-barbeiro" accept="image/*" hidden>
+                        <span class="dica-foto-modal">Formatos JPG ou PNG</span>
+                    </div>
+                </div>
+
                 <div class="grupo-formulario">
                     <label for="campo-nome-barbeiro">Nome do Barbeiro</label>
                     <input type="text" id="campo-nome-barbeiro" name="nome_barbeiro" placeholder="Ex: Lucas Ferreira" required>
@@ -564,8 +308,10 @@
                 </div>
 
                 <div class="grupo-formulario">
-                    <label for="campo-atendimentos-barbeiro">Atendimentos Concluídos no Mês</label>
-                    <input type="number" id="campo-atendimentos-barbeiro" name="atendimentos" min="0" placeholder="Ex: 98" required>
+                    <label>Serviços Realizados pelo Profissional</label>
+                    <div class="grade-checkboxes-servicos-barbeiro" id="checkboxes-servicos-barbeiro">
+                        <!-- Checkboxes preenchidas dinamicamente -->
+                    </div>
                 </div>
 
                 <div class="acoes-modal-dashboard">
@@ -576,6 +322,7 @@
         </div>
     </dialog>
 
+    <!-- MODAL PARA ADICIONAR / EDITAR SERVIÇO -->
     <dialog class="modal-dashboard" id="modal-dashboard-servico">
         <div class="cartao-modal-dashboard">
             <button type="button" class="botao-fechar" id="fechar-modal-servico" aria-label="Fechar">
@@ -583,18 +330,34 @@
             </button>
 
             <h3 class="titulo-modal-dashboard" id="titulo-modal-servico">Editar Serviço</h3>
-            <p class="subtitulo-modal-dashboard">Atualize o nome, categoria e valor cobrado pelo serviço</p>
+            <p class="subtitulo-modal-dashboard">Configure nome, descrição, categoria, duração em minutos e valor</p>
 
             <form class="formulario-modal-dashboard" id="formulario-modal-servico">
                 <div class="grupo-formulario">
                     <label for="campo-nome-servico">Nome do Serviço</label>
-                    <input type="text" id="campo-nome-servico" name="nome_servico" placeholder="Ex: Corte degradê" required>
+                    <input type="text" id="campo-nome-servico" name="nome_servico" placeholder="Ex: Corte Degradê" required>
                 </div>
 
-                <div class="linha-formulario-modal">
+                <div class="grupo-formulario">
+                    <label for="campo-descricao-servico">Descrição Simples (visível no agendamento)</label>
+                    <input type="text" id="campo-descricao-servico" name="descricao_servico" placeholder="Ex: Acabamento na navalha com transição suave" required>
+                </div>
+
+                <div class="linha-formulario-modalTres">
                     <div class="grupo-formulario">
                         <label for="campo-categoria-servico">Categoria</label>
-                        <input type="text" id="campo-categoria-servico" name="categoria_servico" placeholder="Ex: corte, barba, combo" required>
+                        <select id="campo-categoria-servico" name="categoria_servico" required>
+                            <option value="corte">corte</option>
+                            <option value="barba">barba</option>
+                            <option value="tratamento">tratamento</option>
+                            <option value="combo">combo</option>
+                            <option value="outros">outros</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="campo-duracao-servico">Duração (min)</label>
+                        <input type="number" id="campo-duracao-servico" name="duracao_servico" min="5" step="5" value="30" placeholder="Ex: 45" required>
                     </div>
 
                     <div class="grupo-formulario">

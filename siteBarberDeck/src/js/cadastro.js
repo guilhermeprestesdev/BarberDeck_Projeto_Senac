@@ -29,6 +29,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let passoCliente = 1;
     let passoBarbearia = 1;
 
+    // Aplica máscaras de telefone, CNPJ e CEP nos inputs do cadastro
+    const inputClienteWhatsapp = document.getElementById('cliente-whatsapp');
+    const inputBarbCnpj = document.getElementById('barbearia-cnpj');
+    const inputBarbWhatsapp = document.getElementById('barbearia-whatsapp');
+    const inputBarbCep = document.getElementById('barbearia-cep');
+
+    if (inputClienteWhatsapp && window.BarberDeckStore) {
+        inputClienteWhatsapp.addEventListener('input', (e) => {
+            e.target.value = window.BarberDeckStore.aplicarMascaraTelefone(e.target.value);
+        });
+    }
+    if (inputBarbWhatsapp && window.BarberDeckStore) {
+        inputBarbWhatsapp.addEventListener('input', (e) => {
+            e.target.value = window.BarberDeckStore.aplicarMascaraTelefone(e.target.value);
+        });
+    }
+    if (inputBarbCnpj && window.BarberDeckStore) {
+        inputBarbCnpj.addEventListener('input', (e) => {
+            e.target.value = window.BarberDeckStore.aplicarMascaraCNPJ(e.target.value);
+        });
+    }
+    if (inputBarbCep && window.BarberDeckStore) {
+        inputBarbCep.addEventListener('input', (e) => {
+            e.target.value = window.BarberDeckStore.aplicarMascaraCEP(e.target.value);
+        });
+    }
+
     function atualizarInterface() {
         const ehCliente = (perfilAtual === 'cliente');
         const passoAtivo = ehCliente ? passoCliente : passoBarbearia;
@@ -88,10 +115,29 @@ document.addEventListener('DOMContentLoaded', () => {
     function validarEtapa(fieldset) {
         const campos = fieldset.querySelectorAll('input[required]');
         for (const campo of campos) {
+            campo.setCustomValidity('');
             if (!campo.checkValidity()) {
                 campo.reportValidity();
                 return false;
             }
+        }
+        return true;
+    }
+
+    function validarSenhasIguais(inputSenha, inputConfirmar) {
+        if (!inputSenha || !inputConfirmar) return true;
+        inputSenha.setCustomValidity('');
+        inputConfirmar.setCustomValidity('');
+
+        if (inputSenha.value.length < 8) {
+            inputSenha.setCustomValidity('A senha deve ter no mínimo 8 caracteres.');
+            inputSenha.reportValidity();
+            return false;
+        }
+        if (inputSenha.value !== inputConfirmar.value) {
+            inputConfirmar.setCustomValidity('As senhas digitadas não conferem.');
+            inputConfirmar.reportValidity();
+            return false;
         }
         return true;
     }
@@ -107,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         atualizarInterface();
     });
 
-    // Navegação Cliente
+    // Navegação e Criação de Conta: Cliente
     botaoAvancarCliente.addEventListener('click', () => {
         if (passoCliente === 1) {
             if (validarEtapa(clientePasso1)) {
@@ -115,9 +161,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 atualizarInterface();
             }
         } else {
-            if (validarEtapa(clientePasso2)) {
-                alert('Conta de cliente criada com sucesso!');
+            if (!validarEtapa(clientePasso2)) return;
+            const senhaEl = document.getElementById('cliente-senha');
+            const confEl = document.getElementById('cliente-confirmar-senha');
+            if (!validarSenhasIguais(senhaEl, confEl)) return;
+
+            if (window.BarberDeckStore) {
+                const estado = window.BarberDeckStore.obterEstado();
+                estado.cliente.nome = document.getElementById('cliente-nome').value.trim();
+                estado.cliente.whatsapp = document.getElementById('cliente-whatsapp').value.trim();
+                estado.cliente.cidade = document.getElementById('cliente-cidade').value.trim();
+                estado.cliente.email = document.getElementById('cliente-email').value.trim();
+                estado.cliente.senha = senhaEl.value;
+                estado.sessao.tipo = 'cliente';
+                window.BarberDeckStore.salvarEstado(estado);
             }
+            window.location.href = 'index.html';
         }
     });
 
@@ -128,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Navegação Barbearia
+    // Navegação e Criação de Conta: Barbearia
     botaoAvancarBarbearia.addEventListener('click', () => {
         const etapaAtualEl = (passoBarbearia === 1) ? barbeariaPasso1 : ((passoBarbearia === 2) ? barbeariaPasso2 : barbeariaPasso3);
         if (!validarEtapa(etapaAtualEl)) return;
@@ -137,7 +196,31 @@ document.addEventListener('DOMContentLoaded', () => {
             passoBarbearia += 1;
             atualizarInterface();
         } else {
-            alert('Conta da barbearia criada com sucesso!');
+            const senhaEl = document.getElementById('barbearia-senha');
+            const confEl = document.getElementById('barbearia-confirmar-senha');
+            if (!validarSenhasIguais(senhaEl, confEl)) return;
+
+            const params = new URLSearchParams(window.location.search);
+            const planoEscolhido = params.get('plano') || 'pro';
+
+            if (window.BarberDeckStore) {
+                const estado = window.BarberDeckStore.obterEstado();
+                const barbPrincipal = estado.barbearias.find(b => b.id === 1) || estado.barbearias[0];
+                barbPrincipal.nome = document.getElementById('barbearia-nome').value.trim();
+                barbPrincipal.cnpj = document.getElementById('barbearia-cnpj').value.trim();
+                barbPrincipal.whatsapp = document.getElementById('barbearia-whatsapp').value.trim();
+                barbPrincipal.cep = document.getElementById('barbearia-cep').value.trim();
+                barbPrincipal.cidade = document.getElementById('barbearia-cidade').value.trim();
+                barbPrincipal.bairro = document.getElementById('barbearia-bairro').value.trim();
+                barbPrincipal.logradouro = document.getElementById('barbearia-logradouro').value.trim();
+                barbPrincipal.email = document.getElementById('barbearia-email').value.trim();
+                barbPrincipal.senha = senhaEl.value;
+                barbPrincipal.plano = planoEscolhido;
+                estado.sessao.tipo = 'barbearia';
+                estado.sessao.barbeariaId = barbPrincipal.id;
+                window.BarberDeckStore.salvarEstado(estado);
+            }
+            window.location.href = 'dashboard.html';
         }
     });
 

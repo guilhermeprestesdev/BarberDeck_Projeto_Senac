@@ -1,10 +1,10 @@
 /* ==========================================================================
-   1. NAVEGAÇÃO ESTRUTURAL (BREADCRUMB: Agendar > NomeBarbearia)
+   1. NAVEGAÇÃO ESTRUTURAL E CABEÇALHO DA BARBEARIA
    ========================================================================== */
 .navegacao-estrutural {
     max-width: 1280px;
     width: 100%;
-    margin: 2rem auto 0.5rem;
+    margin: 1.75rem auto 0.75rem;
     padding: 0 2rem;
     display: flex;
     align-items: center;
@@ -33,13 +33,127 @@
     font-weight: 600;
 }
 
+/* Cabeçalho rico com dados da barbearia selecionada */
+.cabecalho-vitrine-agendamento {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+}
+
+.cartao-vitrine-agendamento {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-xl);
+    padding: 1.35rem 1.65rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+.foto-vitrine-agendamento {
+    width: 88px;
+    height: 88px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 2px solid var(--border-amber);
+    flex-shrink: 0;
+    background-color: var(--bg-surface-elevated);
+}
+
+.foto-vitrine-agendamento img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.info-vitrine-agendamento {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.linha-topo-vitrine {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.linha-topo-vitrine h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.selo-status-vitrine {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-full);
+}
+
+.selo-status-vitrine.aberto {
+    background-color: var(--status-open-bg);
+    color: var(--status-open-text);
+    border: 1px solid var(--status-open-border);
+}
+
+.selo-status-vitrine.fechado {
+    background-color: var(--status-closed-bg);
+    color: var(--status-closed-text);
+    border: 1px solid var(--status-closed-border);
+}
+
+.avaliacao-vitrine {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--amber-primary);
+}
+
+.descricao-vitrine {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+
+.metadados-vitrine {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 0.15rem;
+}
+
+.item-meta-vitrine {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.item-meta-vitrine img {
+    width: 14px;
+    height: 14px;
+    filter: invert(72%) sepia(85%) saturate(1600%) hue-rotate(5deg);
+}
+
 /* ==========================================================================
    2. INDICADOR DE PROGRESSO (STEPPER NUMERADO DE 1 A 4)
    ========================================================================== */
 .navegacao-progresso {
     max-width: 1280px;
     width: 100%;
-    margin: 1rem auto 3rem;
+    margin: 0.5rem auto 3rem;
     padding: 0 2rem;
     display: flex;
     justify-content: center;
@@ -134,8 +248,7 @@
     align-items: start;
 }
 
-/* Controle estrito do caminho progressivo via data-passo-atual:
-   Apenas a seção do passo atual fica visível; as demais ficam ocultas */
+/* Controle estrito do caminho progressivo via data-passo-atual */
 #container-agendamento[data-passo-atual="1"] #passo-2,
 #container-agendamento[data-passo-atual="1"] #passo-3,
 #container-agendamento[data-passo-atual="2"] #passo-1,
@@ -155,10 +268,7 @@
     display: none !important;
 }
 
-/* Revelação progressiva das informações no Painel de Resumo conforme avança:
-   - Passo 1: exibe apenas Serviços Selecionados e Totais
-   - Passo 2: revela o Barbeiro selecionado
-   - Passo 3 e 4: revela também a Data e Horário selecionados */
+/* Revelação progressiva das informações no Painel de Resumo conforme avança */
 #container-agendamento[data-passo-atual="1"] #divisor-barbeiro,
 #container-agendamento[data-passo-atual="1"] #resumo-secao-barbeiro,
 #container-agendamento[data-passo-atual="1"] #divisor-data-hora,
@@ -168,14 +278,35 @@
     display: none !important;
 }
 
-/* Títulos das Etapas (ESCOLHA OS SERVIÇOS / BARBEIRO / DATA E HORÁRIO) */
+.cabecalho-etapa-fluxo {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+/* Títulos das Etapas */
 .etapa-fluxo h2 {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
+}
+
+.subtitulo-etapa-fluxo {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.aviso-validacao-etapa {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--status-closed-text);
+    background-color: var(--status-closed-bg);
+    border: 1px solid var(--status-closed-border);
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius-md);
 }
 
 .etapa-fluxo fieldset {
@@ -263,7 +394,7 @@
     color: var(--text-secondary);
 }
 
-/* Checkbox quadrado customizado no canto superior direito (como no wireframe) */
+/* Checkbox quadrado customizado no canto superior direito */
 .rotulo-servico input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
@@ -384,7 +515,7 @@
     pointer-events: none;
 }
 
-/* Círculo da foto do barbeiro à esquerda (como na imagem 2) */
+/* Círculo da foto do barbeiro à esquerda */
 .foto-perfil {
     width: 84px;
     height: 84px;
@@ -562,7 +693,7 @@
     cursor: not-allowed;
 }
 
-/* Grade de Horários Disponíveis (5 por linha como na 3ª imagem de referência) */
+/* Grade de Horários Disponíveis */
 .grade-horarios {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -607,6 +738,26 @@
     box-shadow: var(--amber-glow);
 }
 
+.cartao-horario.ocupado {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.cartao-horario.ocupado span {
+    text-decoration: line-through;
+}
+
+.aviso-sem-horarios {
+    grid-column: 1 / -1;
+    background-color: var(--bg-card);
+    border: 1px dashed var(--border-card);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
 /* ==========================================================================
    7. PAINEL DE RESUMO E BOTÕES DE AÇÃO DINÂMICOS
    ========================================================================== */
@@ -618,7 +769,6 @@
     top: 95px;
 }
 
-/* Caixa superior do Resumo (Cartão arredondado conforme referência) */
 .cartao-resumo-interno {
     background-color: var(--bg-card);
     border: 1px solid var(--border-card);
@@ -707,10 +857,21 @@
     display: block;
 }
 
+.dados-barbeiro-resumo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
 #resumo-nome-barbeiro {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-primary);
+}
+
+#resumo-especialidade-barbeiro {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
 }
 
 /* Data e Hora no Resumo */
@@ -759,7 +920,7 @@
     font-weight: 800;
 }
 
-/* Botões de Ação (Empilhados nos Passos 1 a 3, Lado a Lado no Passo 4) */
+/* Botões de Ação */
 .acoes-navegacao {
     display: flex;
     flex-direction: column;
@@ -805,8 +966,6 @@
     background-color: var(--amber-tint);
 }
 
-/* No Passo 4 (Confirmação), os botões ficam lado a lado:
-   EDITAR AGENDAMENTO à esquerda e CONFIRMAR AGENDAMENTO à direita */
 #container-agendamento[data-passo-atual="4"] .acoes-navegacao {
     flex-direction: row-reverse;
     gap: 1rem;
@@ -827,9 +986,15 @@
 
 @media (max-width: 768px) {
     .navegacao-estrutural,
+    .cabecalho-vitrine-agendamento,
     .navegacao-progresso,
     #container-agendamento {
         padding: 0 1.25rem;
+    }
+
+    .cartao-vitrine-agendamento {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     #indicador-etapas li:not(:last-child)::after {

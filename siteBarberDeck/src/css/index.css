@@ -36,15 +36,15 @@
     height: 100%;
     z-index: 1;
     pointer-events: none;
-        img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-    }
 }
 
+.imagem-apresentacao img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
 
 /* Overlay escuro com degradê: escurece a imagem para destacar o texto */
 .imagem-apresentacao::after {
@@ -94,9 +94,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 0.9rem; 
+    width: 0.9rem;
     height: 0.9rem;
-    margin-right: 6px; 
+    margin-right: 6px;
     vertical-align: middle;
 }
 
@@ -137,7 +137,9 @@
    ========================================================================== */
 .secao-busca {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     width: 100%;
 }
 
@@ -208,6 +210,52 @@
     width: 20px;
     height: 20px;
     filter: brightness(0);
+}
+
+/* Aviso de filtro de busca ativo */
+.aviso-filtro-busca {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1.15rem;
+    background-color: var(--amber-tint);
+    border: 1px solid var(--border-amber);
+    border-radius: var(--radius-full);
+    color: var(--amber-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.botao-limpar-busca {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.28rem 0.75rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-limpar-busca:hover {
+    border-color: var(--amber-primary);
+    color: var(--amber-primary);
+}
+
+.estado-vazio-busca {
+    grid-column: 1 / -1;
+    background-color: var(--bg-card);
+    border: 1px dashed var(--border-card);
+    border-radius: var(--radius-xl);
+    padding: 3rem 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
 }
 
 /* ==========================================================================
@@ -332,7 +380,13 @@
     font-size: 0.95rem;
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.3rem;
+}
+
+.qtd-avaliacoes-cartao {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.8rem;
 }
 
 .botao-agendar {
@@ -343,6 +397,8 @@
     padding: 0.5rem 1.25rem;
     border-radius: var(--radius-md);
     text-decoration: none;
+    border: none;
+    cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
 }
@@ -366,8 +422,6 @@
     width: 100%;
     aspect-ratio: 2400 / 1792;
     border-radius: var(--radius-xl);
-    /* Padding em % calculado sobre a proporção da imagem para alinhar as 3 caixas
-       exatamente sobre as bancadas e os números 1, 2 e 3 ao redimensionar */
     padding: 7% 3.8% 6.4% 6.4%;
     overflow: hidden;
     display: flex;
@@ -402,7 +456,6 @@
     border: 1.5px solid rgba(15, 15, 18, 0.85);
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
-    /* Espaço superior livre (~28%) para deixar os números 1, 2 e 3 da imagem visíveis no topo */
     padding: 36% 1.5rem 28%;
     display: flex;
     flex-direction: column;
@@ -697,7 +750,6 @@
         grid-template-columns: 1fr;
     }
 
-    /* No mobile, empilha os 3 cartões mantendo o recorte correspondente dos números 1, 2 e 3 em cada cartão */
     .container-como-funciona {
         aspect-ratio: auto;
         padding: 0;

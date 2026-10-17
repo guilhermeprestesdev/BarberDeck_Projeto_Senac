@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="barbearia, agendamento online, corte de cabelo, barba, gestão de barbearia, BarberDeck">
-    <meta name="description" content="Gestor para barbearias">
-    <title>BarberDeck</title>
+    <meta name="description" content="Encontre as melhores barbearias perto de você e agende seu corte ou barba online em segundos no BarberDeck.">
+    <title>BarberDeck - Agendamento Inteligente para Barbearias</title>
     <script src="../js/header-footer-component.js" defer></script>
+    <script src="../js/index.js" defer></script>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>
     <barber-header></barber-header>
+
     <!-- PÁGINA INICIAL PARA USUÁRIOS NÃO LOGADOS E CLIENTES -->
     <main class="conteudo-principal">
 
@@ -21,25 +25,31 @@
         <section class="secao-apresentacao">
             <div class="texto-apresentacao">
                 <p class="paragrafo-apresentacao-1">Agendamento Inteligente em Tempo Real</p>
-                <h1 class="titulo-apresentacao">Agende seu próximo corte perfeito</h1>
+                <h1 class="titulo-apresentacao">Agende seu próximo <span class="destaque">corte perfeito</span></h1>
                 <p class="paragrafo-apresentacao-2">Encontre as melhores barbearias perto de você e agende em segundos, sem filas.</p>
             </div>
             <div class="imagem-apresentacao">
-                <img src="../images/imagem-topo-client.jpg" alt="Imagem principal da barbearia">
+                <img src="../images/imagem-topo-client.jpg" alt="Ambiente interno de barbearia moderna com cadeiras clássicas">
             </div>
         </section>
 
         <!-- Barra de Busca -->
-        <section class="secao-busca">
-            <form class="barra-busca" action="/buscar" method="GET">
-                <label for="nome-barbearia" class="apenas-leitor-tela">Pesquise por Nome</label>
-                <input type="text" name="nome" id="nome-barbearia" placeholder="Pesquise por nome (Ex: Barbearia Navalha)">
-                <label for="cidade-barbearia" class="apenas-leitor-tela">Pesquise por cidade</label>
-                <input type="text" name="cidade" id="cidade-barbearia" placeholder="Pesquise por cidade (Ex: Erechim)">
-                <button type="submit" aria-label="Buscar">
-                    <img src="../icons/icon-search.svg" alt="" class="icone-busca">
+        <section class="secao-busca" aria-label="Pesquisar barbearias">
+            <form class="barra-busca" id="form-busca-barbearias" action="#barbearias-destaque" method="GET">
+                <label for="nome-barbearia" class="apenas-leitor-tela">Pesquise por nome da barbearia</label>
+                <input type="text" name="nome" id="nome-barbearia" placeholder="Pesquise por nome (Ex: Navalha de Ouro)">
+                <label for="cidade-barbearia" class="apenas-leitor-tela">Pesquise por cidade ou bairro</label>
+                <input type="text" name="cidade" id="cidade-barbearia" placeholder="Pesquise por cidade ou bairro (Ex: Erechim)">
+                <button type="submit" aria-label="Buscar barbearias">
+                    <img src="../icons/icon-search.svg" alt="" class="icone-busca" aria-hidden="true">
                 </button>
             </form>
+
+            <!-- Barra de feedback quando há busca ativa -->
+            <div class="aviso-filtro-busca" id="aviso-filtro-busca" hidden>
+                <span id="texto-resultado-busca">Exibindo resultados da busca</span>
+                <button type="button" class="botao-limpar-busca" id="botao-limpar-busca">Limpar filtros</button>
+            </div>
         </section>
 
         <hr>
@@ -51,58 +61,56 @@
                 <p>As mais bem avaliadas do site</p>
             </div>
 
-            <div class="grade-cartoes">
-                <!-- Cartão Barbearia (exemplo Aberto) -->
+            <div class="grade-cartoes" id="grade-barbearias-destaque">
+                <!-- Preenchido dinamicamente por index.js a partir do BarberDeckStore -->
                 <article class="cartao-barbearia">
                     <div class="container-imagem-cartao">
                         <span class="selo-status aberto">aberto</span>
-                        <img src="barbearia1.jpg" alt="Barbearia Estilo">
+                        <img src="../images/imagem-topo-barber.jpg" alt="Fachada e interior da Barbearia Navalha de Ouro">
                     </div>
                     <div class="informacoes-cartao">
-                        <h3>NOME DA BARBEARIA</h3>
-                        <p class="localizacao">bairro, cidade</p>
+                        <h3>Barbearia Navalha de Ouro</h3>
+                        <p class="localizacao">Centro, Erechim - RS</p>
                         <div class="rodape-cartao">
-                            <span class="avaliacao">⭐ 4.9</span>
-                            <a href="agendamento.html" class="botao-agendar">Agendar</a>
+                            <span class="avaliacao">⭐ 4.9 <small class="qtd-avaliacoes-cartao">(128)</small></span>
+                            <a href="agendamento.html?barbearia=1" class="botao-agendar">Agendar</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Cartão Barbearia (exemplo Fechado) -->
                 <article class="cartao-barbearia">
                     <div class="container-imagem-cartao">
                         <span class="selo-status fechado">fechado</span>
-                        <img src="barbearia2.jpg" alt="Barbearia Clássica">
+                        <img src="../images/imagem-topo-client.jpg" alt="Interior da Barbearia Clássica">
                     </div>
                     <div class="informacoes-cartao">
-                        <h3>NOME DA BARBEARIA</h3>
-                        <p class="localizacao">bairro, cidade</p>
+                        <h3>Barbearia Clássica</h3>
+                        <p class="localizacao">Centro, Erechim - RS</p>
                         <div class="rodape-cartao">
-                            <span class="avaliacao">⭐ 4.8</span>
-                            <a href="agendamento.html" class="botao-agendar">Agendar</a>
+                            <span class="avaliacao">⭐ 4.8 <small class="qtd-avaliacoes-cartao">(94)</small></span>
+                            <a href="agendamento.html?barbearia=2" class="botao-agendar">Agendar</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Cartão Barbearia -->
                 <article class="cartao-barbearia">
                     <div class="container-imagem-cartao">
                         <span class="selo-status aberto">aberto</span>
-                        <img src="barbearia3.jpg" alt="Barbearia Moderna">
+                        <img src="../images/imagem-topo-barber.jpg" alt="Interior da Barbearia Dom Bigode">
                     </div>
                     <div class="informacoes-cartao">
-                        <h3>NOME DA BARBEARIA</h3>
-                        <p class="localizacao">bairro, cidade</p>
+                        <h3>Barbearia Dom Bigode</h3>
+                        <p class="localizacao">Fátima, Erechim - RS</p>
                         <div class="rodape-cartao">
-                            <span class="avaliacao">⭐ 5.0</span>
-                            <a href="agendamento.html" class="botao-agendar">Agendar</a>
+                            <span class="avaliacao">⭐ 5.0 <small class="qtd-avaliacoes-cartao">(67)</small></span>
+                            <a href="agendamento.html?barbearia=3" class="botao-agendar">Agendar</a>
                         </div>
                     </div>
                 </article>
             </div>
         </section>
 
-        <hr>
+        <hr id="divisor-barbearias-novas">
 
         <!-- Barbearias Novas -->
         <section class="secao-barbearias" id="barbearias-novas">
@@ -111,18 +119,18 @@
                 <p>Cadastradas no último mês</p>
             </div>
 
-            <div class="grade-cartoes"> <!-- cartões apenas de demonstração (posteriormente serão gerados com o JS) -->
+            <div class="grade-cartoes" id="grade-barbearias-novas">
                 <article class="cartao-barbearia">
                     <div class="container-imagem-cartao">
                         <span class="selo-status aberto">aberto</span>
-                        <img src="barbearia4.jpg" alt="Barbearia Nova 1">
+                        <img src="../images/imagem-topo-client.jpg" alt="Interior da Deck Studio Barber">
                     </div>
                     <div class="informacoes-cartao">
-                        <h3>NOME DA BARBEARIA</h3>
-                        <p class="localizacao">bairro, cidade</p>
+                        <h3>Deck Studio Barber</h3>
+                        <p class="localizacao">Três Vendas, Erechim - RS</p>
                         <div class="rodape-cartao">
-                            <span class="avaliacao">⭐ 4.7</span>
-                            <a href="agendamento.html" class="botao-agendar">Agendar</a>
+                            <span class="avaliacao">⭐ 4.7 <small class="qtd-avaliacoes-cartao">(31)</small></span>
+                            <a href="agendamento.html?barbearia=4" class="botao-agendar">Agendar</a>
                         </div>
                     </div>
                 </article>
@@ -130,14 +138,14 @@
                 <article class="cartao-barbearia">
                     <div class="container-imagem-cartao">
                         <span class="selo-status fechado">fechado</span>
-                        <img src="barbearia5.jpg" alt="Barbearia Nova 2">
+                        <img src="../images/imagem-topo-barber.jpg" alt="Interior da Confraria da Barba">
                     </div>
                     <div class="informacoes-cartao">
-                        <h3>NOME DA BARBEARIA</h3>
-                        <p class="localizacao">bairro, cidade</p>
+                        <h3>Confraria da Barba</h3>
+                        <p class="localizacao">Centro, Passo Fundo - RS</p>
                         <div class="rodape-cartao">
-                            <span class="avaliacao">⭐ 4.9</span>
-                            <a href="agendamento.html" class="botao-agendar">Agendar</a>
+                            <span class="avaliacao">⭐ 4.9 <small class="qtd-avaliacoes-cartao">(42)</small></span>
+                            <a href="agendamento.html?barbearia=5" class="botao-agendar">Agendar</a>
                         </div>
                     </div>
                 </article>
@@ -145,14 +153,14 @@
                 <article class="cartao-barbearia">
                     <div class="container-imagem-cartao">
                         <span class="selo-status aberto">aberto</span>
-                        <img src="barbearia6.jpg" alt="Barbearia Nova 3">
+                        <img src="../images/imagem-topo-client.jpg" alt="Interior da Viking Barber Club">
                     </div>
                     <div class="informacoes-cartao">
-                        <h3>NOME DA BARBEARIA</h3>
-                        <p class="localizacao">bairro, cidade</p>
+                        <h3>Viking Barber Club</h3>
+                        <p class="localizacao">Bela Vista, Erechim - RS</p>
                         <div class="rodape-cartao">
-                            <span class="avaliacao">⭐ 4.6</span>
-                            <a href="agendamento.html" class="botao-agendar">Agendar</a>
+                            <span class="avaliacao">⭐ 4.6 <small class="qtd-avaliacoes-cartao">(19)</small></span>
+                            <a href="agendamento.html?barbearia=6" class="botao-agendar">Agendar</a>
                         </div>
                     </div>
                 </article>
@@ -168,7 +176,7 @@
             </div>
 
             <div class="container-como-funciona">
-                <img src="../images/imagem-passos-a-passo.jpg" alt="Imagem de fundo da seção Como Funciona" class="imagem-fundo">
+                <img src="../images/imagem-passos-a-passo.jpg" alt="Três bancadas de barbearia numeradas de 1 a 3 ilustrando as etapas de agendamento" class="imagem-fundo">
                 <div class="grade-passos">
                     <div class="cartao-passo">
                         <h3>encontre</h3>
@@ -206,23 +214,23 @@
                         </div>
                         <ul class="lista-recursos-plano">
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>15 dias de acesso total gratuito</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Até 2 barbeiros / funcionários</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Página de perfil no catálogo</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Agendamento online básico</span>
                             </li>
                         </ul>
-                        <button class="botao-plano">Teste Grátis 15 Dias</button>
+                        <button type="button" class="botao-plano">Teste Grátis 15 Dias</button>
                     </div>
 
                     <!-- PLANO 2 -->
@@ -236,27 +244,27 @@
                         </div>
                         <ul class="lista-recursos-plano">
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Sistema completo de gestão da barbearia</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Barbeiros e funcionários ilimitados</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Gestão de horários e comissões</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Painel com métricas e faturamento</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Lembretes automáticos via WhatsApp</span>
                             </li>
                         </ul>
-                        <button class="botao-plano-secundario">Começar Agora</button>
+                        <button type="button" class="botao-plano-secundario">Começar Agora</button>
                     </div>
 
                     <!-- PLANO 3 -->
@@ -269,27 +277,27 @@
                         </div>
                         <ul class="lista-recursos-plano">
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Sistema de Gestão Completo e Relatórios VIP</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Anúncio patrocinado em destaque no site</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Suporte Prioritário 24 horas por dia</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Selo Barbearia Verificada e Topo das Buscas</span>
                             </li>
                             <li class="item-recurso-plano">
-                                <img src="../icons/icon-check.svg" alt="Verificado">
+                                <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
                                 <span>Pagamento online integrado (PIX e Cartão)</span>
                             </li>
                         </ul>
-                        <button class="botao-plano-secundario">Assinar Plano Elite</button>
+                        <button type="button" class="botao-plano-secundario">Assinar Plano Elite</button>
                     </div>
                     <p class="observacoes-planos">Cancele quando quiser. Todos os planos incluem configuração guiada e atualizações contínuas.</p>
                 </div>
@@ -297,7 +305,7 @@
         </section>
 
     </main>
-    
+
     <barber-footer></barber-footer>
 </body>
 

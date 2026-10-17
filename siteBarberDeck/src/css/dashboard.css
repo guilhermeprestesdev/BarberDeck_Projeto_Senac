@@ -46,6 +46,7 @@
 .subtitulo-visao-unidade {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.55rem;
     font-size: 0.95rem;
     color: var(--text-secondary);
@@ -53,6 +54,40 @@
 
 .separador-barra {
     color: var(--text-muted);
+}
+
+.acoes-topo-dashboard {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.botao-editar-barbearia-topo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.58rem 1.15rem;
+    border-radius: var(--radius-full);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-card);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.botao-editar-barbearia-topo img {
+    width: 14px;
+    height: 14px;
+    filter: invert(75%);
+}
+
+.botao-editar-barbearia-topo:hover {
+    border-color: var(--amber-primary);
+    color: var(--amber-primary);
+    background-color: var(--amber-tint);
 }
 
 /* Pílula de Status (Barbearia aberta / fechada) */
@@ -209,7 +244,7 @@
 }
 
 /* ==========================================================================
-   4. COMPONENTE CHAVE SELETORA (TOGGLE SWITCH PADRÃO DAS IMAGENS)
+   4. COMPONENTE CHAVE SELETORA (TOGGLE SWITCH)
    ========================================================================== */
 .chave-seletora {
     position: relative;
@@ -486,7 +521,6 @@
     opacity: 0.5;
 }
 
-/* Bloco esquerdo do Barbeiro (Foto circular + Textos) */
 .bloco-esquerdo-barbeiro {
     display: flex;
     align-items: center;
@@ -525,7 +559,7 @@
 }
 
 .subtitulo-item-dashboard {
-    font-size: 0.86rem;
+    font-size: 0.84rem;
     color: var(--text-secondary);
     line-height: 1.25;
 }
@@ -540,11 +574,12 @@
 .linha-titulo-servico {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.55rem;
     flex-wrap: wrap;
 }
 
-.etiqueta-categoria-servico {
+.etiqueta-categoria-servico,
+.etiqueta-duracao-servico {
     display: inline-flex;
     align-items: center;
     padding: 0.12rem 0.65rem;
@@ -554,7 +589,11 @@
     color: var(--text-secondary);
     font-size: 0.74rem;
     font-weight: 600;
-    text-transform: lowercase;
+}
+
+.etiqueta-duracao-servico {
+    color: var(--amber-primary);
+    border-color: var(--border-amber);
 }
 
 .preco-item-servico {
@@ -564,7 +603,7 @@
     margin-top: 0.15rem;
 }
 
-/* Coluna direita de cada item: Toggle em cima + Lápis e Lixeira embaixo */
+/* Coluna direita de cada item */
 .controles-item-dashboard {
     display: flex;
     flex-direction: column;
@@ -628,7 +667,7 @@
     border-radius: var(--radius-xl);
     background: transparent;
     padding: 0;
-    max-width: 460px;
+    max-width: 500px;
     width: calc(100% - 2rem);
     color: var(--text-primary);
 }
@@ -669,10 +708,94 @@
     margin-top: 0.35rem;
 }
 
-.linha-formulario-modal {
+/* Upload de foto do barbeiro no modal */
+.bloco-foto-modal-barbeiro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+}
+
+.preview-avatar-modal {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--amber-primary);
+    flex-shrink: 0;
+}
+
+.preview-avatar-modal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.controles-foto-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.botao-upload-modal {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    background-color: var(--amber-tint);
+    border: 1px solid var(--border-amber);
+    border-radius: var(--radius-md);
+    color: var(--amber-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-upload-modal:hover {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+}
+
+.dica-foto-modal {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* Grade de checkboxes de serviços do barbeiro */
+.grade-checkboxes-servicos-barbeiro {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.85rem;
+    gap: 0.5rem;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 0.65rem;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+}
+
+.item-chk-servico-barbeiro {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.item-chk-servico-barbeiro input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--amber-primary);
+    cursor: pointer;
+}
+
+.linha-formulario-modalTres {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr 1fr;
+    gap: 0.75rem;
 }
 
 .formulario-modal-dashboard .grupo-formulario {
@@ -687,17 +810,19 @@
     color: var(--text-secondary);
 }
 
-.formulario-modal-dashboard input {
+.formulario-modal-dashboard input,
+.formulario-modal-dashboard select {
     background-color: var(--bg-input);
     border: 1px solid var(--border-card);
     border-radius: var(--radius-md);
-    padding: 0.75rem 0.9rem;
+    padding: 0.72rem 0.85rem;
     color: var(--text-primary);
     font-family: var(--font-main);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
 }
 
-.formulario-modal-dashboard input:focus {
+.formulario-modal-dashboard input:focus,
+.formulario-modal-dashboard select:focus {
     outline: none;
     border-color: var(--amber-primary);
     box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
@@ -812,7 +937,8 @@
         text-align: center;
     }
 
-    .linha-formulario-modal {
+    .linha-formulario-modalTres,
+    .grade-checkboxes-servicos-barbeiro {
         grid-template-columns: 1fr;
     }
 }

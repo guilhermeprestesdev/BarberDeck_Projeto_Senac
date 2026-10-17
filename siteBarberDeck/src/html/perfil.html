@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="minha conta, editar perfil, configurações barbearia, BarberDeck">
+    <meta name="description" content="Gerencie e edite os dados da sua conta de cliente ou da sua barbearia no BarberDeck.">
+    <title>Editar Conta - BarberDeck</title>
+    <script src="../js/header-footer-component.js" defer></script>
+    <script src="../js/perfil.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+</head>
+
+<body>
+    <barber-header></barber-header>
+
+    <main class="conteudo-principal pagina-perfil" id="container-pagina-perfil" data-modo-perfil="cliente">
+
+        <!-- Barra de alternância rápida para testar os estados de sessão e do Header -->
+        <div class="barra-teste-modo" role="region" aria-label="Alternador de modo para testes">
+            <span class="rotulo-teste-modo">Visualização de teste (altera também o cabeçalho):</span>
+            <div class="botoes-teste-modo">
+                <button type="button" class="botao-modo-teste ativo" id="botao-perfil-modo-cliente" data-modo="cliente">
+                    Modo Cliente
+                </button>
+                <button type="button" class="botao-modo-teste" id="botao-perfil-modo-barbearia" data-modo="barbearia">
+                    Modo Barbearia
+                </button>
+                <button type="button" class="botao-modo-teste botao-modo-visitante" id="botao-perfil-modo-visitante" data-modo="visitante">
+                    Deslogar (Visitante)
+                </button>
+            </div>
+        </div>
+
+        <!-- =====================================================================
+             1. VISÃO DE EDIÇÃO DE CONTA — CLIENTE
+             ===================================================================== -->
+        <section class="secao-perfil" id="visao-perfil-cliente" aria-labelledby="titulo-perfil-cliente">
+            <header class="cabecalho-pagina-perfil">
+                <div>
+                    <p class="rotulo-topo-perfil">Configurações da Conta</p>
+                    <h1 id="titulo-perfil-cliente" class="titulo-perfil-pagina">Meu Perfil (Cliente)</h1>
+                </div>
+            </header>
+
+            <div class="grade-layout-perfil">
+
+                <!-- COLUNA ESQUERDA: CARTÃO DE IDENTIDADE E FOTO DO CLIENTE -->
+                <aside class="cartao-resumo-perfil" aria-label="Identidade do cliente">
+                    <div class="bloco-foto-cliente">
+                        <figure class="moldura-avatar-grande">
+                            <img src="../images/imagem-topo-client.jpg" alt="Foto de perfil do cliente" id="preview-foto-cliente">
+                        </figure>
+
+                        <label for="upload-foto-cliente" class="botao-trocar-foto">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>Alterar foto de perfil</span>
+                        </label>
+                        <input type="file" id="upload-foto-cliente" accept="image/*" hidden>
+                    </div>
+
+                    <div class="dados-destaque-perfil">
+                        <span class="selo-tipo-conta">Conta Cliente</span>
+                        <h2 class="nome-destaque-perfil" id="resumo-nome-cliente">João Pedro da Silva</h2>
+                        <p class="subtitulo-destaque-perfil" id="resumo-cidade-cliente">Erechim - RS</p>
+                    </div>
+
+                    <div class="grade-estatisticas-conta">
+                        <div class="caixa-estatistica-conta">
+                            <strong id="estatistica-cliente-abertos">1</strong>
+                            <span>Em aberto</span>
+                        </div>
+                        <div class="caixa-estatistica-conta">
+                            <strong id="estatistica-cliente-concluidos">3</strong>
+                            <span>Cortes concluídos</span>
+                        </div>
+                    </div>
+
+                    <div class="acoes-rodape-perfil">
+                        <a href="agenda.html" class="botao-atalho-perfil">Ver Minha Agenda</a>
+                        <button type="button" class="botao-sair-conta" id="botao-sair-cliente">
+                            Sair da Conta
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- COLUNA DIREITA: FORMULÁRIOS DE EDIÇÃO DO CLIENTE -->
+                <div class="coluna-formularios-perfil">
+
+                    <!-- PAINEL 1: DADOS PESSOAIS -->
+                    <article class="painel-edicao-perfil">
+                        <header class="cabecalho-painel-edicao">
+                            <h2>Dados Pessoais e Contato</h2>
+                            <p>Essas informações são usadas para identificar seus agendamentos e enviar lembretes.</p>
+                        </header>
+
+                        <form class="formulario-edicao-perfil" id="form-dados-cliente" novalidate>
+                            <p class="aviso-feedback-perfil" id="feedback-dados-cliente" hidden></p>
+
+                            <div class="grupo-formulario largura-total">
+                                <label for="perfil-cliente-nome">Nome Completo</label>
+                                <input type="text" id="perfil-cliente-nome" name="nome" placeholder="Ex: João Pedro da Silva" required>
+                            </div>
+
+                            <div class="linha-formulario">
+                                <div class="grupo-formulario">
+                                    <label for="perfil-cliente-whatsapp">WhatsApp</label>
+                                    <input type="tel" id="perfil-cliente-whatsapp" name="whatsapp" placeholder="Ex: (54) 99985-3855" required>
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="perfil-cliente-cidade">Cidade</label>
+                                    <input type="text" id="perfil-cliente-cidade" name="cidade" placeholder="Ex: Erechim - RS" required>
+                                </div>
+                            </div>
+
+                            <div class="grupo-formulario largura-total">
+                                <label for="perfil-cliente-email">E-mail de Acesso</label>
+                                <input type="email" id="perfil-cliente-email" name="email" placeholder="Ex: joao.silva@email.com" required>
+                            </div>
+
+                            <div class="rodape-formulario-perfil">
+                                <button type="submit" class="botao-salvar-perfil">Salvar Alterações</button>
+                            </div>
+                        </form>
+                    </article>
+
+                    <!-- PAINEL 2: SEGURANÇA E SENHA -->
+                    <article class="painel-edicao-perfil">
+                        <header class="cabecalho-painel-edicao">
+                            <h2>Segurança e Senha</h2>
+                            <p>Mantenha sua conta protegida atualizando sua senha periodicamente.</p>
+                        </header>
+
+                        <form class="formulario-edicao-perfil" id="form-senha-cliente" novalidate>
+                            <p class="aviso-feedback-perfil" id="feedback-senha-cliente" hidden></p>
+
+                            <div class="grupo-formulario largura-total">
+                                <label for="cliente-senha-atual">Senha Atual</label>
+                                <input type="password" id="cliente-senha-atual" name="senha_atual" placeholder="Digite sua senha atual" required>
+                            </div>
+
+                            <div class="linha-formulario">
+                                <div class="grupo-formulario">
+                                    <label for="cliente-nova-senha">Nova Senha</label>
+                                    <input type="password" id="cliente-nova-senha" name="nova_senha" placeholder="Mínimo 8 caracteres" required>
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="cliente-confirmar-nova-senha">Confirmar Nova Senha</label>
+                                    <input type="password" id="cliente-confirmar-nova-senha" name="confirmar_nova_senha" placeholder="Repita a nova senha" required>
+                                </div>
+                            </div>
+
+                            <div class="rodape-formulario-perfil">
+                                <button type="submit" class="botao-salvar-secundario">Atualizar Senha</button>
+                            </div>
+                        </form>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EEDIÇÃO DE CONTA -->
+        <section class="secao-perfil" id="visao-perfil-barbearia" aria-labelledby="titulo-perfil-barbearia" hidden>
+            <header class="cabecalho-pagina-perfil">
+                <div>
+                    <p class="rotulo-topo-perfil">Configurações do Estabelecimento</p>
+                    <h1 id="titulo-perfil-barbearia" class="titulo-perfil-pagina">Perfil da Barbearia</h1>
+                </div>
+            </header>
+
+            <div class="grade-layout-perfil">
+
+                <!-- COLUNA ESQUERDA: VITRINE, FOTOS E PLANO DA BARBEARIA -->
+                <aside class="cartao-resumo-perfil" aria-label="Vitrine e plano da barbearia">
+                    <div class="capa-vitrine-barbearia">
+                        <img src="../images/imagem-topo-barber.jpg" alt="Foto de capa da barbearia" id="preview-capa-barbearia">
+                        <label for="upload-capa-barbearia" class="botao-trocar-capa" title="Alterar foto de capa da vitrine">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>Trocar Capa</span>
+                        </label>
+                        <input type="file" id="upload-capa-barbearia" accept="image/*" hidden>
+                    </div>
+
+                    <div class="bloco-foto-barbearia">
+                        <figure class="moldura-avatar-grande avatar-sobreposto">
+                            <img src="../images/imagem-topo-barber.jpg" alt="Logo da barbearia" id="preview-foto-barbearia">
+                        </figure>
+                        <label for="upload-foto-barbearia" class="botao-trocar-foto">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>Alterar Logo / Foto</span>
+                        </label>
+                        <input type="file" id="upload-foto-barbearia" accept="image/*" hidden>
+                    </div>
+
+                    <div class="dados-destaque-perfil">
+                        <span class="selo-tipo-conta">Conta Barbearia</span>
+                        <h2 class="nome-destaque-perfil" id="resumo-nome-barbearia-perfil">Barbearia Navalha de Ouro</h2>
+                        <p class="subtitulo-destaque-perfil" id="resumo-endereco-barbearia-perfil">Centro • Erechim - RS</p>
+                    </div>
+
+                    <!-- Bloco de Gestão do Plano de Assinatura -->
+                    <div class="cartao-plano-ativo">
+                        <div class="topo-plano-ativo">
+                            <span class="rotulo-plano-ativo">Plano de Assinatura</span>
+                            <span class="selo-plano-ativo" id="selo-nome-plano-ativo">Gestão Pro</span>
+                        </div>
+                        <p class="preco-plano-ativo" id="texto-preco-plano-ativo">R$ 69,90 / mês</p>
+                        <div class="grupo-formulario">
+                            <label for="seletor-plano-barbearia">Alterar Plano</label>
+                            <select id="seletor-plano-barbearia" name="plano">
+                                <option value="inicial">Plano Inicial (Teste 15 dias - R$ 0)</option>
+                                <option value="pro" selected>Plano Gestão Pro (R$ 69,90/mês)</option>
+                                <option value="elite">Plano Elite e Destaque (R$ 169,90/mês)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="acoes-rodape-perfil">
+                        <a href="dashboard.html" class="botao-atalho-perfil">Ir para o Dashboard</a>
+                        <button type="button" class="botao-sair-conta" id="botao-sair-barbearia">
+                            Sair da Conta
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- COLUNA DIREITA: FORMULÁRIOS DE EDIÇÃO DA BARBEARIA -->
+                <div class="coluna-formularios-perfil">
+
+                    <!-- PAINEL 1: DADOS DA EMPRESA E ENDEREÇO -->
+                    <article class="painel-edicao-perfil">
+                        <header class="cabecalho-painel-edicao">
+                            <h2>Dados da Empresa e Localização</h2>
+                            <p>Essas informações aparecem nos cartões da página inicial e na tela de agendamento.</p>
+                        </header>
+
+                        <form class="formulario-edicao-perfil" id="form-dados-barbearia" novalidate>
+                            <p class="aviso-feedback-perfil" id="feedback-dados-barbearia" hidden></p>
+
+                            <div class="grupo-formulario largura-total">
+                                <label for="perfil-barbearia-nome">Nome da Barbearia (Nome Fantasia)</label>
+                                <input type="text" id="perfil-barbearia-nome" name="nome_empresa" placeholder="Ex: Barbearia Navalha de Ouro" required>
+                            </div>
+
+                            <div class="linha-formulario">
+                                <div class="grupo-formulario">
+                                    <label for="perfil-barbearia-cnpj">CNPJ</label>
+                                    <input type="text" id="perfil-barbearia-cnpj" name="cnpj" placeholder="Ex: 12.345.678/0001-90" required>
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="perfil-barbearia-whatsapp">WhatsApp Comercial</label>
+                                    <input type="tel" id="perfil-barbearia-whatsapp" name="whatsapp" placeholder="Ex: (54) 99985-3855" required>
+                                </div>
+                            </div>
+
+                            <div class="grupo-formulario largura-total">
+                                <label for="perfil-barbearia-email">E-mail Comercial (Login)</label>
+                                <input type="email" id="perfil-barbearia-email" name="email" placeholder="Ex: contato@navalhadeouro.com.br" required>
+                            </div>
+
+                            <div class="grupo-formulario largura-total">
+                                <label for="perfil-barbearia-descricao">Descrição da Barbearia (Vitrine)</label>
+                                <textarea id="perfil-barbearia-descricao" name="descricao" rows="3" placeholder="Descreva os diferenciais e o estilo da sua barbearia"></textarea>
+                            </div>
+
+                            <div class="linha-formulario">
+                                <div class="grupo-formulario">
+                                    <label for="perfil-barbearia-cep">CEP</label>
+                                    <input type="text" id="perfil-barbearia-cep" name="cep" placeholder="Ex: 99700-000" required>
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="perfil-barbearia-cidade">Cidade</label>
+                                    <input type="text" id="perfil-barbearia-cidade" name="cidade" placeholder="Ex: Erechim - RS" required>
+                                </div>
+                            </div>
+
+                            <div class="linha-formulario">
+                                <div class="grupo-formulario">
+                                    <label for="perfil-barbearia-bairro">Bairro</label>
+                                    <input type="text" id="perfil-barbearia-bairro" name="bairro" placeholder="Ex: Centro" required>
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="perfil-barbearia-logradouro">Logradouro e Número</label>
+                                    <input type="text" id="perfil-barbearia-logradouro" name="logradouro" placeholder="Ex: Av. Maurício Cardoso, 500" required>
+                                </div>
+                            </div>
+
+                            <div class="rodape-formulario-perfil">
+                                <button type="submit" class="botao-salvar-perfil">Salvar Dados da Barbearia</button>
+                            </div>
+                        </form>
+                    </article>
+
+                    <!-- PAINEL 2: SEGURANÇA E SENHA DA BARBEARIA -->
+                    <article class="painel-edicao-perfil">
+                        <header class="cabecalho-painel-edicao">
+                            <h2>Segurança e Credenciais</h2>
+                            <p>Altere a senha administrativa de acesso ao painel da barbearia.</p>
+                        </header>
+
+                        <form class="formulario-edicao-perfil" id="form-senha-barbearia" novalidate>
+                            <p class="aviso-feedback-perfil" id="feedback-senha-barbearia" hidden></p>
+
+                            <div class="grupo-formulario largura-total">
+                                <label for="barbearia-senha-atual">Senha Atual</label>
+                                <input type="password" id="barbearia-senha-atual" name="senha_atual" placeholder="Digite sua senha atual" required>
+                            </div>
+
+                            <div class="linha-formulario">
+                                <div class="grupo-formulario">
+                                    <label for="barbearia-nova-senha">Nova Senha</label>
+                                    <input type="password" id="barbearia-nova-senha" name="nova_senha" placeholder="Mínimo 8 caracteres" required>
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="barbearia-confirmar-nova-senha">Confirmar Nova Senha</label>
+                                    <input type="password" id="barbearia-confirmar-nova-senha" name="confirmar_nova_senha" placeholder="Repita a nova senha" required>
+                                </div>
+                            </div>
+
+                            <div class="rodape-formulario-perfil">
+                                <button type="submit" class="botao-salvar-secundario">Atualizar Senha</button>
+                            </div>
+                        </form>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <barber-footer></barber-footer>
+</body>
+
+</html>

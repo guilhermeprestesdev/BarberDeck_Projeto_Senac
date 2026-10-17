@@ -7,7 +7,7 @@
 }
 
 /* ==========================================================================
-   1. [TEMPORÁRIO PARA TESTES] BARRA DE ALTERNÂNCIA DE MODO
+   1. BARRA DE ALTERNÂNCIA DE MODO
    ========================================================================== */
 .barra-teste-modo {
     display: flex;
@@ -73,6 +73,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .titulo-agenda {
@@ -82,7 +84,7 @@
     letter-spacing: -0.01em;
 }
 
-/* Quadro Principal Arredondado com Barra de Rolagem Vertical (como nos wireframes) */
+/* Quadro Principal Arredondado com Barra de Rolagem Vertical */
 .painel-lista-agenda {
     background-color: var(--bg-surface);
     border: 1.5px solid var(--border-card);
@@ -91,12 +93,11 @@
     display: flex;
     flex-direction: column;
     gap: 1.1rem;
-    max-height: 600px;
+    max-height: 620px;
     overflow-y: auto;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
 }
 
-/* Estilização da Barra de Rolagem Vertical igual ao destaque das referências */
 .painel-lista-agenda::-webkit-scrollbar {
     width: 12px;
 }
@@ -119,7 +120,7 @@
 }
 
 /* ==========================================================================
-   3. CARTÕES DE AGENDAMENTO (COMPARTILHADO ENTRE CLIENTE E BARBEARIA)
+   3. CARTÕES DE AGENDAMENTO E BLOQUEIOS (CLIENTE E BARBEARIA)
    ========================================================================== */
 .cartao-agendamento {
     background-color: var(--bg-card);
@@ -144,7 +145,7 @@
 }
 
 .cartao-agendamento.concluido {
-    opacity: 0.82;
+    opacity: 0.88;
 }
 
 .cartao-agendamento.concluido:hover {
@@ -152,20 +153,19 @@
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Layout das colunas no Modo Cliente:
-   - Em aberto: 3 colunas (Info | Data e Valor | Ações)
-   - Concluído: 2 colunas (Info | Data e Valor) */
-.cartao-cliente.em-aberto {
-    grid-template-columns: 1fr 175px 140px;
+/* Cartão de Bloqueio de Horário (Almoço / Folga) */
+.cartao-agendamento.cartao-bloqueio {
+    border: 1px dashed var(--border-amber);
+    background-color: rgba(245, 158, 11, 0.05);
+    grid-template-columns: 115px 1fr 145px;
 }
 
+/* Layout das colunas no Modo Cliente e Barbearia */
+.cartao-cliente.em-aberto,
 .cartao-cliente.concluido {
-    grid-template-columns: 1fr 220px;
+    grid-template-columns: 1fr 185px 155px;
 }
 
-/* Layout das colunas no Modo Barbearia:
-   - Em aberto: 3 colunas (Horário | Cliente e Serviços | Ações)
-   - Concluído: 2 colunas (Horário | Cliente e Serviços) */
 .cartao-barbearia.em-aberto {
     grid-template-columns: 115px 1fr 145px;
 }
@@ -174,7 +174,6 @@
     grid-template-columns: 115px 1fr;
 }
 
-/* Informações Principais e Títulos */
 .coluna-principal-agendamento,
 .coluna-cliente-servicos {
     display: flex;
@@ -208,9 +207,10 @@
     font-weight: 500;
 }
 
-/* Selos de Status (Em aberto / Concluído) */
+/* Selos de Status (Em aberto / Concluído / Bloqueio) */
 .selo-agendamento-aberto,
-.selo-agendamento-concluido {
+.selo-agendamento-concluido,
+.selo-bloqueio-agenda {
     font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -226,12 +226,18 @@
 }
 
 .selo-agendamento-concluido {
-    background-color: rgba(255, 255, 255, 0.06);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-subtle);
+    background-color: var(--status-open-bg);
+    color: var(--status-open-text);
+    border: 1px solid var(--status-open-border);
 }
 
-/* Cápsulas de Serviços (Serviço 1, Serviço 2, etc.) */
+.selo-bloqueio-agenda {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--amber-primary);
+    border: 1px dashed var(--amber-border);
+}
+
+/* Cápsulas de Serviços */
 .lista-etiquetas-servicos {
     list-style: none;
     display: flex;
@@ -261,14 +267,20 @@
     color: var(--text-secondary);
 }
 
-/* Coluna Central do Cliente: Data e Valor (com divisória vertical à esquerda) */
+.comentario-avaliacao-cliente {
+    font-size: 0.8rem;
+    color: var(--amber-primary);
+    font-style: italic;
+}
+
+/* Coluna Central do Cliente: Data e Valor */
 .coluna-data-valor {
     border-left: 1.5px solid var(--border-card);
     padding-left: 1.35rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.55rem;
+    gap: 0.45rem;
     height: 100%;
 }
 
@@ -284,7 +296,7 @@
     color: var(--amber-primary);
 }
 
-/* Coluna de Ações (cancelar / editar / concluir) com divisória vertical */
+/* Coluna de Ações */
 .coluna-acoes-agendamento {
     border-left: 1.5px solid var(--border-card);
     padding-left: 1.25rem;
@@ -305,7 +317,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    padding: 0.2rem 0.4rem;
+    padding: 0.25rem 0.5rem;
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -341,17 +353,27 @@
     filter: invert(58%) sepia(65%) saturate(540%) hue-rotate(110deg);
 }
 
-.botao-acao-item.acao-concluir:hover {
-    color: var(--status-open-text);
-    background-color: var(--status-open-bg);
+.botao-acao-item.acao-avaliar {
+    color: var(--amber-primary);
+    border: 1px solid var(--border-amber);
+    background-color: var(--amber-tint);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.75rem;
 }
 
-.botao-acao-item.acao-concluir:hover img {
-    filter: invert(58%) sepia(65%) saturate(540%) hue-rotate(110deg);
+.botao-acao-item.acao-avaliar:hover {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+}
+
+.selo-ja-avaliado {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--amber-primary);
 }
 
 /* ==========================================================================
-   4. CONTROLES EXCLUSIVOS DO MODO BARBEARIA (DATA, NOVO AGENDAMENTO E ABAS)
+   4. CONTROLES DO MODO BARBEARIA (DATA, BLOQUEIO, BALCÃO E ABAS)
    ========================================================================== */
 .barra-controles-barbearia {
     display: grid;
@@ -360,7 +382,6 @@
     gap: 1rem;
 }
 
-/* Seletor de Data (< HOJE >) centralizado */
 .controle-navegacao-data {
     display: inline-flex;
     align-items: center;
@@ -392,8 +413,8 @@
 .botao-data-atual {
     padding: 0 1.25rem;
     font-size: 0.875rem;
-    letter-spacing: 0.04em;
-    min-width: 96px;
+    letter-spacing: 0.03em;
+    min-width: 110px;
 }
 
 .botao-seta-data:hover,
@@ -403,22 +424,48 @@
     background-color: var(--amber-tint);
 }
 
-/* Botão Novo Agendamento à direita */
 .container-novo-agendamento {
     justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.botao-bloquear-horario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.25rem;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-amber);
+    color: var(--amber-primary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-bloquear-horario:hover {
+    background-color: var(--amber-tint);
+    border-color: var(--amber-primary);
 }
 
 .botao-novo-agendamento {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.65rem;
+    padding: 0.72rem 1.45rem;
     background-color: var(--amber-primary);
     color: var(--text-dark);
-    font-size: 0.9rem;
+    border: none;
+    font-family: inherit;
+    font-size: 0.875rem;
     font-weight: 700;
     border-radius: var(--radius-lg);
     text-decoration: none;
+    cursor: pointer;
     box-shadow: var(--amber-glow);
     transition: all 0.2s ease;
 }
@@ -429,7 +476,7 @@
     box-shadow: var(--amber-glow-strong);
 }
 
-/* Abas de Barbeiros (Barbeiro 1 a Barbeiro 5) */
+/* Abas de Barbeiros */
 .navegacao-barbeiros {
     width: 100%;
 }
@@ -437,8 +484,8 @@
 .abas-barbeiros {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.85rem;
     padding: 0;
     margin: 0;
 }
@@ -451,7 +498,7 @@
     border-radius: var(--radius-full);
     color: var(--text-secondary);
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -471,32 +518,46 @@
     box-shadow: var(--amber-glow);
 }
 
-/* Coluna de Horário no Cartão da Barbearia (00:00 à esquerda com divisória) */
 .coluna-horario-barbearia {
     border-right: 1.5px solid var(--border-card);
     padding-right: 1.25rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
+    gap: 0.2rem;
 }
 
 .horario-atendimento {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--amber-primary);
     letter-spacing: 0.02em;
 }
 
+.duracao-slot-barbearia {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.estado-vazio-agenda {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
 /* ==========================================================================
-   5. MODAL DE EDIÇÃO / REAGENDAMENTO RÁPIDO
+   5. MODAIS DA AGENDA (EDIÇÃO, BALCÃO, BLOQUEIO E AVALIAÇÃO)
    ========================================================================== */
 .modal-edicao-agenda {
     border: none;
     background: transparent;
     padding: 0;
     margin: auto;
-    max-width: 460px;
+    max-width: 480px;
     width: calc(100% - 2rem);
     color: var(--text-primary);
 }
@@ -531,6 +592,66 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.linha-formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+}
+
+/* Grade de checkboxes de serviços dentro dos modais */
+.grade-checkboxes-modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+    max-height: 185px;
+    overflow-y: auto;
+    padding: 0.65rem;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+}
+
+.opcao-checkbox-modal {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.opcao-checkbox-modal input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--amber-primary);
+    cursor: pointer;
+}
+
+/* Seletor de estrelas da avaliação */
+.seletor-estrelas-avaliacao {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.botao-estrela {
+    background: var(--bg-input);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    width: 44px;
+    height: 44px;
+    font-size: 1.45rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-estrela.ativo {
+    color: var(--amber-primary);
+    border-color: var(--amber-primary);
+    background-color: var(--amber-tint);
 }
 
 .acoes-modal-agenda {
@@ -574,7 +695,7 @@
 }
 
 /* ==========================================================================
-   6. RESPONSIVIDADE (Tablets e Smartphones)
+   6. RESPONSIVIDADE
    ========================================================================== */
 @media (max-width: 960px) {
     .barra-controles-barbearia {
@@ -587,14 +708,6 @@
 
     .controle-navegacao-data {
         justify-self: start;
-    }
-
-    .abas-barbeiros {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .cartao-cliente.em-aberto {
-        grid-template-columns: 1fr 150px 130px;
     }
 }
 
@@ -619,9 +732,11 @@
 
     .container-novo-agendamento {
         justify-self: stretch;
+        flex-direction: column;
     }
 
-    .botao-novo-agendamento {
+    .botao-novo-agendamento,
+    .botao-bloquear-horario {
         width: 100%;
     }
 
@@ -637,11 +752,11 @@
         padding: 0.55rem 1.15rem;
     }
 
-    /* Empilha as colunas internas dos cartões de forma limpa no mobile */
     .cartao-cliente.em-aberto,
     .cartao-cliente.concluido,
     .cartao-barbearia.em-aberto,
-    .cartao-barbearia.concluido {
+    .cartao-barbearia.concluido,
+    .cartao-agendamento.cartao-bloqueio {
         grid-template-columns: 1fr;
         gap: 0.9rem;
     }
@@ -651,7 +766,8 @@
         border-bottom: 1px solid var(--border-subtle);
         padding-right: 0;
         padding-bottom: 0.6rem;
-        justify-content: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .coluna-data-valor {
@@ -673,5 +789,10 @@
         flex-wrap: wrap;
         justify-content: space-between;
         width: 100%;
+    }
+
+    .linha-formulario,
+    .grade-checkboxes-modal {
+        grid-template-columns: 1fr;
     }
 }
