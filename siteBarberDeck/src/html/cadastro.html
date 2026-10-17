@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="cadastro barbearia, criar conta cliente, agendamento online, BarberDeck">
+    <meta name="description" content="Crie sua conta de cliente ou cadastre sua barbearia no BarberDeck em poucos passos.">
+    <title>Criar Conta - BarberDeck</title>
+    <script src="../js/header-footer-component.js" defer></script>
+    <script src="../js/cadastro.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
+</head>
+
+<body>
+    <barber-header></barber-header>
+
+    <main class="conteudo-principal pagina-cadastro" id="container-pagina-cadastro" data-perfil="cliente" data-passo="1">
+
+        <!-- Cartão Central de Cadastro em Passos -->
+        <section class="cartao-cadastro-etapas" aria-label="Fluxo de criação de conta">
+
+            <!-- Alternador Superior: Entrar (abre o popup) | Cadastrar (ativo) -->
+            <div class="abas-alternancia" role="navigation" aria-label="Alternar entre entrar e cadastrar">
+                <button type="button" class="botao-aba" data-abrir-login>
+                    Entrar
+                </button>
+                <span class="botao-aba ativo" aria-current="page">
+                    Cadastrar
+                </span>
+            </div>
+
+            <!-- Seletor de Perfil Sempre Visível ou Destacado no Topo (Cliente vs Barbearia) -->
+            <div class="seletor-perfil" role="tablist" aria-label="Escolha o tipo de conta">
+                <button type="button" class="cartao-perfil ativo" id="botao-tipo-cliente" role="tab"
+                    aria-selected="true" aria-controls="formulario-cadastro-cliente">
+                    <img src="../icons/icon-user.svg" alt="" class="icone-perfil" aria-hidden="true">
+                    <span class="titulo-perfil">Cliente</span>
+                    <span class="descricao-perfil">Agende seus horários</span>
+                </button>
+
+                <button type="button" class="cartao-perfil" id="botao-tipo-barbearia" role="tab"
+                    aria-selected="false" aria-controls="formulario-cadastro-barbearia">
+                    <img src="../icons/icon-barbearia.svg" alt="" class="icone-perfil" aria-hidden="true">
+                    <span class="titulo-perfil">Barbearia</span>
+                    <span class="descricao-perfil">Gerencie seu negócio</span>
+                </button>
+            </div>
+
+            <!-- Indicador de Progresso das Etapas (Stepper dinâmico: 2 passos p/ Cliente, 3 passos p/ Barbearia) -->
+            <nav class="navegacao-passos-cadastro" aria-label="Etapas do cadastro">
+                <ol id="indicador-passos-cadastro">
+                    <li class="item-passo-cadastro ativo" id="indicador-cadastro-1">
+                        <span class="rotulo-passo-cadastro" id="rotulo-passo-1">Dados Pessoais</span>
+                    </li>
+                    <li class="item-passo-cadastro" id="indicador-cadastro-2">
+                        <span class="rotulo-passo-cadastro" id="rotulo-passo-2">Acesso</span>
+                    </li>
+                    <li class="item-passo-cadastro" id="indicador-cadastro-3" hidden>
+                        <span class="rotulo-passo-cadastro" id="rotulo-passo-3">Acesso</span>
+                    </li>
+                </ol>
+            </nav>
+
+            <form class="formulario-cadastro" id="formulario-cadastro-cliente" novalidate>
+
+                <!-- PASSO 1 (CLIENTE): DADOS PESSOAIS -->
+                <fieldset class="etapa-cadastro" id="cliente-passo-1">
+                    <legend class="titulo-etapa-cadastro">1. Seus Dados Pessoais</legend>
+
+                    <div class="grupo-formulario largura-total">
+                        <label for="cliente-nome">Nome Completo</label>
+                        <input type="text" id="cliente-nome" name="nome" placeholder="Ex: João Pedro da Silva" required>
+                    </div>
+
+                    <div class="linha-formulario">
+                        <div class="grupo-formulario">
+                            <label for="cliente-whatsapp">WhatsApp</label>
+                            <input type="tel" id="cliente-whatsapp" name="whatsapp" placeholder="Ex: (54) 99985-3855" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="cliente-cidade">Cidade</label>
+                            <input type="text" id="cliente-cidade" name="cidade" placeholder="Ex: Erechim - RS" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- PASSO 2 (CLIENTE): DADOS DE ACESSO -->
+                <fieldset class="etapa-cadastro" id="cliente-passo-2" hidden>
+                    <legend class="titulo-etapa-cadastro">2. Dados de Acesso</legend>
+
+                    <div class="grupo-formulario largura-total">
+                        <label for="cliente-email">E-mail</label>
+                        <input type="email" id="cliente-email" name="email" placeholder="Ex: joao.silva@email.com" required>
+                    </div>
+
+                    <div class="linha-formulario">
+                        <div class="grupo-formulario">
+                            <label for="cliente-senha">Senha</label>
+                            <input type="password" id="cliente-senha" name="senha" placeholder="Ex: Mínimo 8 caracteres" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="cliente-confirmar-senha">Confirmar Senha</label>
+                            <input type="password" id="cliente-confirmar-senha" name="confirmar_senha" placeholder="Ex: Repita sua senha" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Botões de Navegação dos Passos (Cliente) -->
+                <div class="acoes-cadastro">
+                    <button type="button" class="botao-passo-anterior" id="botao-voltar-cliente" hidden>
+                        Passo Anterior
+                    </button>
+                    <button type="button" class="botao-enviar botao-criar-conta" id="botao-avancar-cliente">
+                        Próximo Passo
+                    </button>
+                </div>
+            </form>
+
+            <form class="formulario-cadastro" id="formulario-cadastro-barbearia" hidden novalidate>
+
+                <!-- PASSO 1 (BARBEARIA): DADOS DA EMPRESA -->
+                <fieldset class="etapa-cadastro" id="barbearia-passo-1">
+                    <legend class="titulo-etapa-cadastro">1. Dados da Barbearia</legend>
+
+                    <div class="grupo-formulario largura-total">
+                        <label for="barbearia-nome">Nome da Empresa</label>
+                        <input type="text" id="barbearia-nome" name="nome_empresa" placeholder="Ex: Barbearia Navalha de Ouro" required>
+                    </div>
+
+                    <div class="linha-formulario">
+                        <div class="grupo-formulario">
+                            <label for="barbearia-cnpj">CNPJ</label>
+                            <input type="text" id="barbearia-cnpj" name="cnpj" placeholder="Ex: 12.345.678/0001-90" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="barbearia-whatsapp">WhatsApp Comercial</label>
+                            <input type="tel" id="barbearia-whatsapp" name="whatsapp" placeholder="Ex: (54) 99985-3855" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- PASSO 2 (BARBEARIA): ENDEREÇO -->
+                <fieldset class="etapa-cadastro" id="barbearia-passo-2" hidden>
+                    <legend class="titulo-etapa-cadastro">2. Localização da Barbearia</legend>
+
+                    <div class="linha-formulario">
+                        <div class="grupo-formulario">
+                            <label for="barbearia-cep">CEP</label>
+                            <input type="text" id="barbearia-cep" name="cep" placeholder="Ex: 99700-000" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="barbearia-cidade">Cidade</label>
+                            <input type="text" id="barbearia-cidade" name="cidade" placeholder="Ex: Erechim - RS" required>
+                        </div>
+                    </div>
+
+                    <div class="linha-formulario">
+                        <div class="grupo-formulario">
+                            <label for="barbearia-bairro">Bairro</label>
+                            <input type="text" id="barbearia-bairro" name="bairro" placeholder="Ex: Centro" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="barbearia-logradouro">Logradouro e Número</label>
+                            <input type="text" id="barbearia-logradouro" name="logradouro" placeholder="Ex: Av. Maurício Cardoso, 500" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- PASSO 3 (BARBEARIA): DADOS DE ACESSO -->
+                <fieldset class="etapa-cadastro" id="barbearia-passo-3" hidden>
+                    <legend class="titulo-etapa-cadastro">3. Credenciais de Acesso</legend>
+
+                    <div class="grupo-formulario largura-total">
+                        <label for="barbearia-email">E-mail Comercial</label>
+                        <input type="email" id="barbearia-email" name="email" placeholder="Ex: contato@navalhadeouro.com.br" required>
+                    </div>
+
+                    <div class="linha-formulario">
+                        <div class="grupo-formulario">
+                            <label for="barbearia-senha">Senha</label>
+                            <input type="password" id="barbearia-senha" name="senha" placeholder="Ex: Mínimo 8 caracteres" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="barbearia-confirmar-senha">Confirmar Senha</label>
+                            <input type="password" id="barbearia-confirmar-senha" name="confirmar_senha" placeholder="Ex: Repita sua senha" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Botões de Navegação dos Passos (Barbearia) -->
+                <div class="acoes-cadastro">
+                    <button type="button" class="botao-passo-anterior" id="botao-voltar-barbearia" hidden>
+                        Passo Anterior
+                    </button>
+                    <button type="button" class="botao-enviar botao-criar-conta" id="botao-avancar-barbearia">
+                        Próximo Passo
+                    </button>
+                </div>
+            </form>
+
+        </section>
+
+    </main>
+
+    <barber-footer></barber-footer>
+</body>
+
+</html>

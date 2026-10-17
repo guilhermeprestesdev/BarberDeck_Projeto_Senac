@@ -1,0 +1,818 @@
+.pagina-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.25rem 2rem 5rem;
+    gap: 2.25rem;
+}
+
+/* ==========================================================================
+   1. CABEÇALHO DO DASHBOARD E BOTÃO DE STATUS DA BARBEARIA
+   ========================================================================== */
+.secao-topo-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.rotulo-pagina-dashboard {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
+}
+
+.barra-identificacao-barbearia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.bloco-titulo-barbearia {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nome-barbearia-dashboard {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.subtitulo-visao-unidade {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.separador-barra {
+    color: var(--text-muted);
+}
+
+/* Pílula de Status (Barbearia aberta / fechada) */
+.botao-status-barbearia {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    color: var(--text-primary);
+}
+
+.botao-status-barbearia.aberta {
+    background-color: var(--status-open-bg);
+    border-color: var(--status-open-border);
+    color: var(--status-open-text);
+}
+
+.botao-status-barbearia.fechada {
+    background-color: var(--status-closed-bg);
+    border-color: var(--status-closed-border);
+    color: var(--status-closed-text);
+}
+
+.indicador-ponto-status {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: currentColor;
+    box-shadow: 0 0 8px currentColor;
+    flex-shrink: 0;
+}
+
+.botao-status-barbearia:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   2. GRADE DE MÉTRICAS (3 CARTÕES DE INDICADORES)
+   ========================================================================== */
+.grade-metricas-dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.cartao-metrica {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-xl);
+    padding: 1.65rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.35rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.cartao-metrica:hover {
+    border-color: var(--border-amber);
+    transform: translateY(-2px);
+}
+
+.topo-cartao-metrica {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.caixa-icone-metrica {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background-color: var(--amber-tint);
+    border: 1px solid var(--border-amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.caixa-icone-metrica img {
+    width: 22px;
+    height: 22px;
+    filter: invert(66%) sepia(79%) saturate(1637%) hue-rotate(359deg) brightness(101%) contrast(96%);
+}
+
+.titulo-cartao-metrica {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    line-height: 1.25;
+}
+
+.valor-principal-metrica {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.comparativo-metrica {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.comparativo-metrica.positivo .destaque-comparativo {
+    color: var(--status-open-text);
+    font-weight: 700;
+}
+
+.comparativo-metrica.negativo .destaque-comparativo {
+    color: var(--status-closed-text);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   3. GRADE INFERIOR: HORÁRIO DE FUNCIONAMENTO + BARBEIROS / SERVIÇOS
+   ========================================================================== */
+.grade-paineis-gestao {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.75rem;
+    align-items: stretch;
+}
+
+.painel-dashboard {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-xl);
+    padding: 1.85rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.titulo-painel-dashboard {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   4. COMPONENTE CHAVE SELETORA (TOGGLE SWITCH PADRÃO DAS IMAGENS)
+   ========================================================================== */
+.chave-seletora {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 50px;
+    height: 26px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.chave-seletora input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.trilho-chave {
+    position: absolute;
+    inset: 0;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-full);
+    transition: all 0.25s ease;
+}
+
+.trilho-chave::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--text-muted);
+    border-radius: 50%;
+    transition: all 0.25s ease;
+}
+
+.chave-seletora input:checked + .trilho-chave {
+    background-color: var(--amber-tint);
+    border-color: var(--amber-primary);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+}
+
+.chave-seletora input:checked + .trilho-chave::before {
+    transform: translate(24px, -50%);
+    background-color: var(--amber-primary);
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.55);
+}
+
+.chave-seletora input:focus-visible + .trilho-chave {
+    outline: 2px solid var(--amber-primary);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   5. PAINEL ESQUERDO: HORÁRIO DE FUNCIONAMENTO
+   ========================================================================== */
+.formulario-horarios {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: 1.75rem;
+}
+
+.lista-dias-funcionamento {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+}
+
+.linha-dia-funcionamento {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 40px;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.linha-dia-funcionamento:last-child {
+    border-bottom: none;
+}
+
+.bloco-dia-chave {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.nome-dia-semana {
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.2s ease;
+}
+
+.linha-dia-funcionamento.dia-fechado .nome-dia-semana {
+    color: var(--text-muted);
+}
+
+.grupo-intervalo-horario {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.campo-horario-dia {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0.42rem 0.6rem;
+    text-align: center;
+    color-scheme: dark;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo-horario-dia:focus {
+    outline: none;
+    border-color: var(--amber-primary);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+.texto-separador-horario {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.rodape-painel-horarios {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+}
+
+.botao-salvar-horarios {
+    width: 100%;
+    max-width: 310px;
+    padding: 0.88rem 1.75rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--amber-primary);
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.botao-salvar-horarios:hover {
+    background-color: var(--amber-hover);
+    box-shadow: var(--amber-glow);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   6. PAINEL DIREITO: ABAS E LISTAGEM DE BARBEIROS E SERVIÇOS
+   ========================================================================== */
+.topo-painel-listagem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.35rem;
+    flex-wrap: wrap;
+}
+
+.botao-adicionar-item {
+    padding: 0.52rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-amber);
+    background-color: var(--amber-tint);
+    color: var(--amber-primary);
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-adicionar-item:hover {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    box-shadow: var(--amber-glow);
+}
+
+/* Seletor em pílula: [ Barbeiros | Serviços ] */
+.alternador-abas-dashboard {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-full);
+    padding: 0.25rem;
+    gap: 0.25rem;
+    margin-left: auto;
+}
+
+.botao-aba-dashboard {
+    padding: 0.45rem 1.35rem;
+    border-radius: var(--radius-full);
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-aba-dashboard:hover {
+    color: var(--text-primary);
+}
+
+.botao-aba-dashboard.ativo {
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    box-shadow: var(--amber-glow);
+}
+
+/* Lista de itens (Barbeiros ou Serviços) */
+.conteudo-aba-dashboard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-itens-dashboard {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    max-height: 470px;
+    overflow-y: auto;
+    padding-right: 0.35rem;
+}
+
+.lista-itens-dashboard::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lista-itens-dashboard::-webkit-scrollbar-track {
+    background: var(--bg-surface);
+    border-radius: var(--radius-full);
+}
+
+.lista-itens-dashboard::-webkit-scrollbar-thumb {
+    background: rgba(245, 158, 11, 0.35);
+    border-radius: var(--radius-full);
+}
+
+.item-lista-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.95rem 0.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    transition: opacity 0.25s ease;
+}
+
+.item-lista-dashboard.item-inativo .bloco-esquerdo-barbeiro,
+.item-lista-dashboard.item-inativo .dados-item-dashboard {
+    opacity: 0.5;
+}
+
+/* Bloco esquerdo do Barbeiro (Foto circular + Textos) */
+.bloco-esquerdo-barbeiro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.foto-barbeiro-dashboard {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--border-amber);
+    background-color: var(--bg-surface-elevated);
+    flex-shrink: 0;
+}
+
+.foto-barbeiro-dashboard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dados-item-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+    min-width: 0;
+}
+
+.titulo-item-dashboard {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+.subtitulo-item-dashboard {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.25;
+}
+
+.meta-item-dashboard {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--amber-primary);
+}
+
+/* Estrutura específica dos itens da aba Serviços */
+.linha-titulo-servico {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.etiqueta-categoria-servico {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.12rem 0.65rem;
+    border-radius: var(--radius-full);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-card);
+    color: var(--text-secondary);
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.preco-item-servico {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--amber-primary);
+    margin-top: 0.15rem;
+}
+
+/* Coluna direita de cada item: Toggle em cima + Lápis e Lixeira embaixo */
+.controles-item-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.45rem;
+    flex-shrink: 0;
+}
+
+.acoes-icone-dashboard {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.botao-icone-dashboard {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    background-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-icone-dashboard img {
+    width: 16px;
+    height: 16px;
+    filter: invert(72%) sepia(6%) saturate(245%) hue-rotate(202deg) brightness(92%) contrast(88%);
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.botao-icone-dashboard.acao-editar:hover {
+    background-color: var(--amber-tint);
+    border-color: var(--border-amber);
+}
+
+.botao-icone-dashboard.acao-editar:hover img {
+    filter: invert(66%) sepia(79%) saturate(1637%) hue-rotate(359deg) brightness(101%) contrast(96%);
+    transform: scale(1.08);
+}
+
+.botao-icone-dashboard.acao-excluir:hover {
+    background-color: var(--status-closed-bg);
+    border-color: var(--status-closed-border);
+}
+
+.botao-icone-dashboard.acao-excluir:hover img {
+    filter: invert(39%) sepia(93%) saturate(1752%) hue-rotate(338deg) brightness(96%) contrast(93%);
+    transform: scale(1.08);
+}
+
+/* ==========================================================================
+   7. MODAIS DE EDIÇÃO / CRIAÇÃO (BARBEIRO E SERVIÇO)
+   ========================================================================== */
+.modal-dashboard {
+    margin: auto;
+    border: none;
+    border-radius: var(--radius-xl);
+    background: transparent;
+    padding: 0;
+    max-width: 460px;
+    width: calc(100% - 2rem);
+    color: var(--text-primary);
+}
+
+.modal-dashboard::backdrop {
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(5px);
+}
+
+.cartao-modal-dashboard {
+    position: relative;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.65);
+}
+
+.titulo-modal-dashboard {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.subtitulo-modal-dashboard {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: -0.4rem;
+}
+
+.formulario-modal-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.35rem;
+}
+
+.linha-formulario-modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+}
+
+.formulario-modal-dashboard .grupo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.formulario-modal-dashboard label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.formulario-modal-dashboard input {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 0.9rem;
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+}
+
+.formulario-modal-dashboard input:focus {
+    outline: none;
+    border-color: var(--amber-primary);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+.acoes-modal-dashboard {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.botao-cancelar-modal {
+    padding: 0.7rem 1.25rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-card);
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botao-cancelar-modal:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+.botao-salvar-modal {
+    padding: 0.7rem 1.35rem;
+    border-radius: var(--radius-md);
+    border: none;
+    background-color: var(--amber-primary);
+    color: var(--text-dark);
+    font-family: var(--font-main);
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botao-salvar-modal:hover {
+    background-color: var(--amber-hover);
+    box-shadow: var(--amber-glow);
+}
+
+/* ==========================================================================
+   8. RESPONSIVIDADE (TABLET E MOBILE)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .grade-metricas-dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grade-metricas-dashboard .cartao-metrica:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .grade-paineis-gestao {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .pagina-dashboard {
+        padding: 1.5rem 1.15rem 3.5rem;
+        gap: 1.75rem;
+    }
+
+    .nome-barbearia-dashboard {
+        font-size: 1.55rem;
+    }
+
+    .grade-metricas-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .valor-principal-metrica {
+        font-size: 1.8rem;
+    }
+
+    .painel-dashboard {
+        padding: 1.35rem 1.15rem;
+    }
+
+    .linha-dia-funcionamento {
+        flex-wrap: wrap;
+        gap: 0.65rem;
+    }
+
+    .grupo-intervalo-horario {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .topo-painel-listagem {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .alternador-abas-dashboard {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .botao-aba-dashboard {
+        flex: 1;
+        text-align: center;
+    }
+
+    .botao-adicionar-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .linha-formulario-modal {
+        grid-template-columns: 1fr;
+    }
+}

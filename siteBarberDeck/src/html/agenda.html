@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="agenda barbearia, meus agendamentos, reagendar corte, BarberDeck">
+    <meta name="description" content="Visualize, edite e gerencie seus agendamentos no BarberDeck.">
+    <title>Agenda - BarberDeck</title>
+    <script src="../js/header-footer-component.js" defer></script>
+    <script src="../js/agenda.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/agenda.css">
+</head>
+
+<body>
+    <barber-header></barber-header>
+
+    <main class="conteudo-principal pagina-agenda" id="container-pagina-agenda" data-modo-agenda="cliente">
+
+        <div class="barra-teste-modo" role="region" aria-label="Alternador de modo para testes">
+            <span class="rotulo-teste-modo">Visualização de teste:</span>
+            <div class="botoes-teste-modo">
+                <button type="button" class="botao-modo-teste ativo" id="botao-modo-cliente" data-modo="cliente">
+                    Modo Cliente
+                </button>
+                <button type="button" class="botao-modo-teste" id="botao-modo-barbearia" data-modo="barbearia">
+                    Modo Barbearia
+                </button>
+            </div>
+        </div>
+
+        <section class="secao-agenda" id="visao-agenda-cliente" aria-labelledby="titulo-agenda-cliente">
+            <header class="cabecalho-pagina-agenda">
+                <h1 id="titulo-agenda-cliente" class="titulo-agenda">Agenda (para cliente)</h1>
+            </header>
+
+            <!-- Quadro externo com rolagem vertical conforme imagem de referência 1 -->
+            <div class="painel-lista-agenda" role="region" aria-label="Lista de agendamentos do cliente" tabindex="0">
+
+                <!-- 1. AGENDAMENTO EM ABERTO (Não concluído -> Permite cancelar e editar) -->
+                <article class="cartao-agendamento cartao-cliente em-aberto" data-id="cli-1" data-barbeiro="Lucas Ferreira" data-data="20/10/2026" data-hora="14:30" data-valor="R$ 95,00">
+                    <div class="coluna-principal-agendamento">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-estabelecimento">Barbearia Navalha de Ouro</h2>
+                            <span class="separador-barra" aria-hidden="true">|</span>
+                            <span class="nome-barbeiro-atendimento">Lucas Ferreira</span>
+                            <span class="selo-agendamento-aberto">Em aberto</span>
+                        </div>
+
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços agendados">
+                            <li class="etiqueta-servico">Corte Degradê</li>
+                            <li class="etiqueta-servico">Barba Completa</li>
+                            <li class="etiqueta-servico">Sobrancelha</li>
+                        </ul>
+
+                        <p class="endereco-barbearia">Av. Maurício Cardoso, 500 - Centro, Erechim - RS</p>
+                    </div>
+
+                    <div class="coluna-data-valor">
+                        <span class="data-agendamento">20/10/2026 • 14:30</span>
+                        <strong class="valor-agendamento">R$ 95,00</strong>
+                    </div>
+
+                    <div class="coluna-acoes-agendamento">
+                        <button type="button" class="botao-acao-item acao-cancelar" data-acao="cancelar">
+                            <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
+                            <span>cancelar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-editar" data-acao="editar">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>editar</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 2. AGENDAMENTO CONCLUÍDO (Histórico -> Apenas visualização, sem coluna de ações) -->
+                <article class="cartao-agendamento cartao-cliente concluido" data-id="cli-2">
+                    <div class="coluna-principal-agendamento">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-estabelecimento">Barbearia Navalha de Ouro</h2>
+                            <span class="separador-barra" aria-hidden="true">|</span>
+                            <span class="nome-barbeiro-atendimento">Lucas Ferreira</span>
+                            <span class="selo-agendamento-concluido">Concluído</span>
+                        </div>
+
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços realizados">
+                            <li class="etiqueta-servico">Corte Tradicional</li>
+                            <li class="etiqueta-servico">Barba Completa</li>
+                        </ul>
+
+                        <p class="endereco-barbearia">Av. Maurício Cardoso, 500 - Centro, Erechim - RS</p>
+                    </div>
+
+                    <div class="coluna-data-valor">
+                        <span class="data-agendamento">05/10/2026</span>
+                        <strong class="valor-agendamento">R$ 80,00</strong>
+                    </div>
+                </article>
+
+                <!-- 3. AGENDAMENTO CONCLUÍDO -->
+                <article class="cartao-agendamento cartao-cliente concluido" data-id="cli-3">
+                    <div class="coluna-principal-agendamento">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-estabelecimento">Barbearia Clássica</h2>
+                            <span class="separador-barra" aria-hidden="true">|</span>
+                            <span class="nome-barbeiro-atendimento">Rafael Souza</span>
+                            <span class="selo-agendamento-concluido">Concluído</span>
+                        </div>
+
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços realizados">
+                            <li class="etiqueta-servico">Corte Degradê</li>
+                            <li class="etiqueta-servico">Pezinho</li>
+                            <li class="etiqueta-servico">Hidratação</li>
+                        </ul>
+
+                        <p class="endereco-barbearia">Rua Itália, 210 - Centro, Erechim - RS</p>
+                    </div>
+
+                    <div class="coluna-data-valor">
+                        <span class="data-agendamento">18/09/2026</span>
+                        <strong class="valor-agendamento">R$ 85,00</strong>
+                    </div>
+                </article>
+
+                <!-- 4. AGENDAMENTO CONCLUÍDO -->
+                <article class="cartao-agendamento cartao-cliente concluido" data-id="cli-4">
+                    <div class="coluna-principal-agendamento">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-estabelecimento">Barbearia Dom Bigode</h2>
+                            <span class="separador-barra" aria-hidden="true">|</span>
+                            <span class="nome-barbeiro-atendimento">Mateus Lima</span>
+                            <span class="selo-agendamento-concluido">Concluído</span>
+                        </div>
+
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços realizados">
+                            <li class="etiqueta-servico">Cabelo + Barba</li>
+                            <li class="etiqueta-servico">Sobrancelha</li>
+                        </ul>
+
+                        <p class="endereco-barbearia">Av. Sete de Setembro, 1120 - Fátima, Erechim - RS</p>
+                    </div>
+
+                    <div class="coluna-data-valor">
+                        <span class="data-agendamento">02/09/2026</span>
+                        <strong class="valor-agendamento">R$ 90,00</strong>
+                    </div>
+                </article>
+
+                <!-- 5. AGENDAMENTO CONCLUÍDO -->
+                <article class="cartao-agendamento cartao-cliente concluido" data-id="cli-5">
+                    <div class="coluna-principal-agendamento">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-estabelecimento">Barbearia Navalha de Ouro</h2>
+                            <span class="separador-barra" aria-hidden="true">|</span>
+                            <span class="nome-barbeiro-atendimento">Lucas Ferreira</span>
+                            <span class="selo-agendamento-concluido">Concluído</span>
+                        </div>
+
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços realizados">
+                            <li class="etiqueta-servico">Corte Tradicional</li>
+                        </ul>
+
+                        <p class="endereco-barbearia">Av. Maurício Cardoso, 500 - Centro, Erechim - RS</p>
+                    </div>
+
+                    <div class="coluna-data-valor">
+                        <span class="data-agendamento">15/08/2026</span>
+                        <strong class="valor-agendamento">R$ 45,00</strong>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="secao-agenda" id="visao-agenda-barbearia" aria-labelledby="titulo-agenda-barbearia" hidden>
+            <header class="cabecalho-pagina-agenda">
+                <h1 id="titulo-agenda-barbearia" class="titulo-agenda">Agenda (para barbeiros/barbearia)</h1>
+            </header>
+
+            <!-- Barra Superior: Seletor de Data (< HOJE >) no centro + Botão Novo Agendamento à direita -->
+            <div class="barra-controles-barbearia">
+                <div class="espacador-controles" aria-hidden="true"></div>
+
+                <div class="controle-navegacao-data" role="group" aria-label="Navegação de data da agenda">
+                    <button type="button" class="botao-seta-data" id="botao-dia-anterior" aria-label="Dia anterior">&lt;</button>
+                    <button type="button" class="botao-data-atual" id="botao-hoje" title="Clique para voltar para hoje">
+                        <span id="rotulo-data-agenda">HOJE</span>
+                    </button>
+                    <input type="date" id="seletor-data-oculta" class="apenas-leitor-tela" aria-label="Escolher data específica">
+                    <button type="button" class="botao-seta-data" id="botao-proximo-dia" aria-label="Próximo dia">&gt;</button>
+                </div>
+
+                <div class="container-novo-agendamento">
+                    <a href="agendamento.html" class="botao-novo-agendamento">Novo Agendamento</a>
+                </div>
+            </div>
+
+            <!-- Abas de Filtro por Barbeiro (Barbeiro 1 a Barbeiro 5 conforme referência) -->
+            <nav class="navegacao-barbeiros" aria-label="Filtrar agenda por barbeiro">
+                <ul class="abas-barbeiros" role="tablist">
+                    <li role="presentation">
+                        <button type="button" class="botao-aba-barbeiro ativo" role="tab" aria-selected="true" data-barbeiro-id="1">
+                            Barbeiro 1
+                        </button>
+                    </li>
+                    <li role="presentation">
+                        <button type="button" class="botao-aba-barbeiro" role="tab" aria-selected="false" data-barbeiro-id="2">
+                            Barbeiro 2
+                        </button>
+                    </li>
+                    <li role="presentation">
+                        <button type="button" class="botao-aba-barbeiro" role="tab" aria-selected="false" data-barbeiro-id="3">
+                            Barbeiro 3
+                        </button>
+                    </li>
+                    <li role="presentation">
+                        <button type="button" class="botao-aba-barbeiro" role="tab" aria-selected="false" data-barbeiro-id="4">
+                            Barbeiro 4
+                        </button>
+                    </li>
+                    <li role="presentation">
+                        <button type="button" class="botao-aba-barbeiro" role="tab" aria-selected="false" data-barbeiro-id="5">
+                            Barbeiro 5
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Quadro da Agenda do Dia com rolagem vertical conforme imagem de referência 2 -->
+            <div class="painel-lista-agenda" id="lista-agendamentos-barbearia" role="region" aria-label="Agendamentos do dia" tabindex="0">
+
+                <!-- Atendimento 1 (Em aberto) -->
+                <article class="cartao-agendamento cartao-barbearia em-aberto" data-id="barb-1" data-barbeiro-id="1" data-cliente="João Pedro da Silva" data-data="16/10/2026" data-hora="09:00">
+                    <div class="coluna-horario-barbearia">
+                        <time class="horario-atendimento">09:00</time>
+                    </div>
+
+                    <div class="coluna-cliente-servicos">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-cliente-agenda">João Pedro da Silva</h2>
+                            <span class="selo-agendamento-aberto">Em aberto</span>
+                        </div>
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços contratados">
+                            <li class="etiqueta-servico">Corte Degradê</li>
+                            <li class="etiqueta-servico">Barba Completa</li>
+                            <li class="etiqueta-servico">Sobrancelha</li>
+                        </ul>
+                    </div>
+
+                    <div class="coluna-acoes-agendamento">
+                        <button type="button" class="botao-acao-item acao-cancelar" data-acao="cancelar">
+                            <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
+                            <span>cancelar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-editar" data-acao="editar">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>editar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-concluir" data-acao="concluir">
+                            <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
+                            <span>concluir</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Atendimento 2 (Em aberto) -->
+                <article class="cartao-agendamento cartao-barbearia em-aberto" data-id="barb-2" data-barbeiro-id="1" data-cliente="Carlos Eduardo Almeida" data-data="16/10/2026" data-hora="10:30">
+                    <div class="coluna-horario-barbearia">
+                        <time class="horario-atendimento">10:30</time>
+                    </div>
+
+                    <div class="coluna-cliente-servicos">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-cliente-agenda">Carlos Eduardo Almeida</h2>
+                            <span class="selo-agendamento-aberto">Em aberto</span>
+                        </div>
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços contratados">
+                            <li class="etiqueta-servico">Corte Tradicional</li>
+                            <li class="etiqueta-servico">Pezinho</li>
+                        </ul>
+                    </div>
+
+                    <div class="coluna-acoes-agendamento">
+                        <button type="button" class="botao-acao-item acao-cancelar" data-acao="cancelar">
+                            <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
+                            <span>cancelar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-editar" data-acao="editar">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>editar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-concluir" data-acao="concluir">
+                            <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
+                            <span>concluir</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Atendimento 3 (Em aberto) -->
+                <article class="cartao-agendamento cartao-barbearia em-aberto" data-id="barb-3" data-barbeiro-id="1" data-cliente="Gabriel Henrique Costa" data-data="16/10/2026" data-hora="14:00">
+                    <div class="coluna-horario-barbearia">
+                        <time class="horario-atendimento">14:00</time>
+                    </div>
+
+                    <div class="coluna-cliente-servicos">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-cliente-agenda">Gabriel Henrique Costa</h2>
+                            <span class="selo-agendamento-aberto">Em aberto</span>
+                        </div>
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços contratados">
+                            <li class="etiqueta-servico">Cabelo + Barba</li>
+                            <li class="etiqueta-servico">Hidratação</li>
+                            <li class="etiqueta-servico">Sobrancelha</li>
+                        </ul>
+                    </div>
+
+                    <div class="coluna-acoes-agendamento">
+                        <button type="button" class="botao-acao-item acao-cancelar" data-acao="cancelar">
+                            <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
+                            <span>cancelar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-editar" data-acao="editar">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>editar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-concluir" data-acao="concluir">
+                            <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
+                            <span>concluir</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Atendimento 4 (Em aberto) -->
+                <article class="cartao-agendamento cartao-barbearia em-aberto" data-id="barb-4" data-barbeiro-id="1" data-cliente="Matheus Ribeiro" data-data="16/10/2026" data-hora="15:30">
+                    <div class="coluna-horario-barbearia">
+                        <time class="horario-atendimento">15:30</time>
+                    </div>
+
+                    <div class="coluna-cliente-servicos">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-cliente-agenda">Matheus Ribeiro</h2>
+                            <span class="selo-agendamento-aberto">Em aberto</span>
+                        </div>
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços contratados">
+                            <li class="etiqueta-servico">Barba Completa</li>
+                        </ul>
+                    </div>
+
+                    <div class="coluna-acoes-agendamento">
+                        <button type="button" class="botao-acao-item acao-cancelar" data-acao="cancelar">
+                            <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
+                            <span>cancelar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-editar" data-acao="editar">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>editar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-concluir" data-acao="concluir">
+                            <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
+                            <span>concluir</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Atendimento 5 (Em aberto) -->
+                <article class="cartao-agendamento cartao-barbearia em-aberto" data-id="barb-5" data-barbeiro-id="1" data-cliente="Felipe Martins" data-data="16/10/2026" data-hora="17:00">
+                    <div class="coluna-horario-barbearia">
+                        <time class="horario-atendimento">17:00</time>
+                    </div>
+
+                    <div class="coluna-cliente-servicos">
+                        <div class="linha-titulo-agendamento">
+                            <h2 class="nome-cliente-agenda">Felipe Martins</h2>
+                            <span class="selo-agendamento-aberto">Em aberto</span>
+                        </div>
+                        <ul class="lista-etiquetas-servicos" aria-label="Serviços contratados">
+                            <li class="etiqueta-servico">Corte Degradê</li>
+                            <li class="etiqueta-servico">Sobrancelha</li>
+                        </ul>
+                    </div>
+
+                    <div class="coluna-acoes-agendamento">
+                        <button type="button" class="botao-acao-item acao-cancelar" data-acao="cancelar">
+                            <img src="../icons/icon-excluir.svg" alt="" aria-hidden="true">
+                            <span>cancelar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-editar" data-acao="editar">
+                            <img src="../icons/icon-editar.svg" alt="" aria-hidden="true">
+                            <span>editar</span>
+                        </button>
+                        <button type="button" class="botao-acao-item acao-concluir" data-acao="concluir">
+                            <img src="../icons/icon-check.svg" alt="" aria-hidden="true">
+                            <span>concluir</span>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL PARA EDITAR AGENDAMENTO EM ABERTO -->
+    <dialog class="modal-edicao-agenda" id="modal-edicao-agenda">
+        <div class="cartao-modal-agenda">
+            <button type="button" class="botao-fechar" id="fechar-modal-agenda" aria-label="Fechar">
+                <img src="../icons/icon-x.svg" alt="" aria-hidden="true">
+            </button>
+
+            <h3 class="titulo-modal-agenda" id="titulo-modal-agenda">Editar Agendamento</h3>
+            <p class="subtitulo-modal-agenda" id="subtitulo-modal-agenda">Altere os serviços ou o horário da reserva</p>
+
+            <form class="formulario-modal-agenda" id="formulario-modal-agenda">
+                <div class="linha-formulario">
+                    <div class="grupo-formulario">
+                        <label for="editar-data">Nova Data</label>
+                        <input type="text" id="editar-data" name="data" placeholder="Ex: 20/10/2026" required>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="editar-horario">Novo Horário</label>
+                        <input type="text" id="editar-horario" name="horario" placeholder="Ex: 14:30" required>
+                    </div>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="editar-servicos">Serviços (separados por vírgula)</label>
+                    <input type="text" id="editar-servicos" name="servicos" placeholder="Ex: Corte Degradê, Barba Completa" required>
+                </div>
+
+                <div class="acoes-modal-agenda">
+                    <button type="button" class="botao-cancelar-modal" id="cancelar-modal-agenda">Voltar</button>
+                    <button type="submit" class="botao-salvar-modal">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <barber-footer></barber-footer>
+</body>
+
+</html>
