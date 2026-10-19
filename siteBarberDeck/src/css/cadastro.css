@@ -241,7 +241,7 @@
 }
 
 /* ==========================================================================
-   4. RESPONSIVIDADE (Compacto no celular para evitar scroll)
+   4. RESPONSIVIDADE
    ========================================================================== */
 @media (max-width: 640px) {
     .pagina-cadastro {

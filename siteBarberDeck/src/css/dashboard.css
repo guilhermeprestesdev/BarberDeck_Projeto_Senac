@@ -134,7 +134,7 @@
 }
 
 /* ==========================================================================
-   2. GRADE DE MÉTRICAS (3 CARTÕES DE INDICADORES)
+   2. GRADE DE MÉTRICAS
    ========================================================================== */
 .grade-metricas-dashboard {
     display: grid;
@@ -369,6 +369,7 @@
     text-align: center;
     color-scheme: dark;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor:text;
 }
 
 .campo-horario-dia:focus {

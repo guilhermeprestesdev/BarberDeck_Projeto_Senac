@@ -133,7 +133,7 @@
 }
 
 /* ==========================================================================
-   2. BARRA DE BUSCA (Formato Cápsula do Wireframe)
+   2. BARRA DE BUSCA
    ========================================================================== */
 .secao-busca {
     display: flex;
@@ -259,7 +259,7 @@
 }
 
 /* ==========================================================================
-   3. CARDS DE BARBEARIAS (Estilo da Imagem 5)
+   3. CARDS DE BARBEARIAS
    ========================================================================== */
 .grade-cartoes {
     display: grid;
@@ -410,7 +410,7 @@
 }
 
 /* ==========================================================================
-   4. COMO FUNCIONA (Imagem ao fundo com os 3 passos alinhados aos números 1, 2 e 3)
+   4. COMO FUNCIONA
    ========================================================================== */
 .secao-como-funciona {
     display: flex;
@@ -465,12 +465,6 @@
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.cartao-passo:hover {
-    border-color: var(--amber-border);
-    background: rgba(18, 18, 21, 0.72);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55), 0 0 18px rgba(245, 158, 11, 0.16);
-}
-
 .cartao-passo h3 {
     font-size: clamp(1.15rem, 2.2vw, 1.85rem);
     font-weight: 700;
@@ -488,7 +482,7 @@
 }
 
 /* ==========================================================================
-   5. PLANOS (Grade de 3 Colunas com Destaque Central)
+   5. PLANOS
    ========================================================================== */
 .secao-planos {
     display: flex;
